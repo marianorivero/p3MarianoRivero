@@ -26,7 +26,7 @@
 <body>
     <!--Crear un boton que redireccione a "welcome"-->
     
-    <a href="welcome.blade.php"> Boton </a>
+    <a href="http://localhost/mariano-app/public/"> Boton </a>
 
 </body>
 </html>
