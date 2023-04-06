@@ -1,5 +1,9 @@
 <?php
 /** php artisan make:controller StudentController --resource 
+ * o
+ * php artisan make:controller Student Controller
+ * 
+ * (el --resource te agrega metodos para utilizar)
  * EN EL ARCHIVO .ENV MODIFIQUE EL NOMBRE DE LA BASE DE DATOS
 */
 namespace App\Http\Controllers;
