@@ -1,7 +1,5 @@
 <?php
-/** php artisan make:controller StudentController --resource 
- * EN EL ARCHIVO .ENV MODIFIQUE EL NOMBRE DE LA BASE DE DATOS
-*/
+/**php artisan make:controller StudentController --resource */
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
