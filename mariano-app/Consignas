@@ -1,0 +1,9 @@
+Hacer una aplicacion web para controlar la asistencia del alumno por QR o de forma manual.
+
+
+El usuario puede hacer un CRUD de los alumnos
+
+
+Datos de las asistencias: Fecha y hora, a que alumno pertenece y quien la registro, si el usuario (manual) o el alumno (QR)
+Datos de alumno: nombre, apellido, dni, carrera/materia
+Datos de profesor/usuario: mail, contraseña

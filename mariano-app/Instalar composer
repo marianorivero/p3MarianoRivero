@@ -1,0 +1,14 @@
+1- clonar repositorio dentro de la carpeta www de laragon
+
+2- abrir una terminal dentro del proyecto y usar el comando "composer install"
+
+3- dentro del proyecto crear un archivo .env (de momento vacío)
+
+4- buscar un archivo llamado ".env.example", copiar todo su contenido y pegarlo en el archivo .env 
+
+5- abrir una terminal dentro del proyecto y utilizar los siguientes comando:
+
+"php artisan key:generate"
+"php artisan cache:clear"
+"php artisan config:clear"
+"php artisan serve"

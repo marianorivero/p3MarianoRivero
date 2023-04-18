@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use app\Http\Controllers\StudentController;
+=======
+use App\Http\Controllers\StudentController;
+>>>>>>> 43da327b29a299c6177be1ace7297b381d18dd94
 
 /*
 |--------------------------------------------------------------------------

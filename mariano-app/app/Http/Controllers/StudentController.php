@@ -1,8 +1,9 @@
 <?php
-/**php artisan make:controller StudentController --resource */
+/**php artisan make:controller StudentController --resource*/
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
@@ -11,7 +12,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+		$students = Student::all();
+       dd($students);
+       
     }
 
     /**
@@ -43,7 +46,7 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        dd($id);
     }
 
     /**
