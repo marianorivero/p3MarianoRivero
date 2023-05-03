@@ -26,7 +26,8 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
-        //
+        //$this->logChanges('A')
+        //importamos el trait Audit y utilizamos los metodos
     }
 
 
