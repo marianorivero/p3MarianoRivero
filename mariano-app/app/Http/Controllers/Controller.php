@@ -26,6 +26,22 @@ user_id
 Ximportar libreria DB que permite usar SQL desde el controlador para insertar en la BD (no es factible)
 -Hacer un trait donde tengamos metodos para hacer las consultas SQL
 
+
+
+https://github.com/jesus0206/proyecto_altas_y_bajas
+
+
+<!--
+
+<form action="{{route('student.destroy', [$students->id])}}" method="POST">
+  @csrf
+  @method('delete')
+<form>
+    
+-->
+
+BREEZE LARAVEL
+
 */
 namespace App\Http\Controllers;
 

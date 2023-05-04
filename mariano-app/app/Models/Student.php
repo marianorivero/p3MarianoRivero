@@ -1,5 +1,6 @@
 <?php
-/* php artisan make:model Student*/ 
+/* php artisan make:model Student
+*/ 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,6 +13,7 @@ class Student extends Model
     protected $fillable = [
         'name',
         'last_name',
+        'state',
         'dni',
         'birthday',
     ];
