@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('last_name');
-            $table->boolean('state');//estado, ausente o presente
+            $table->boolean('state')->nullable();//estado, ausente o presente
             $table->string('dni')->unique();
             $table->date('birthday');
             $table->timestamps();//genera 2 tablas de fecha de creacion y modificacion

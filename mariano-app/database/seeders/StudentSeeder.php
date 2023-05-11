@@ -4,9 +4,11 @@ namespace Database\Seeders;
 //php artisan make:seeder StudentSeeder
 //composer dump-autoload
 //php artisan migreate:fresh --seed
+
+// use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use App\Models\Student;
 
 class StudentSeeder extends Seeder
 {
@@ -15,12 +17,15 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('students')->insert([
-            'name' => 'Mariano',
-            'last_name' => 'Rivero',
-            'dni' => '40635415',
-            'birthday' => '1997-10-18',
-        ]);
+
+        Student::factory(20)->create();
+
+        // DB::table('students')->insert([
+        //     'name' => 'Mariano',
+        //     'last_name' => 'Rivero',
+        //     'dni' => '40635415',
+        //     'birthday' => '1997-10-18',
+        // ]);
         //
     }
 }

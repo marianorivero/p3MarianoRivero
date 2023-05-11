@@ -4,6 +4,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -17,4 +18,19 @@ class Student extends Model
         'dni',
         'birthday',
     ];
+
+
+    protected function name(): Attribute{
+        return new Attribute(
+            get: fn($value) => ucwords($value),
+            set: fn($value) => strtolower($value)
+        );
+    }
+
+    protected function lastName(): Attribute{
+        return new Attribute(
+            get: fn($value) => ucwords($value),
+            set: fn($value) => strtolower($value)
+        );
+    }
 }

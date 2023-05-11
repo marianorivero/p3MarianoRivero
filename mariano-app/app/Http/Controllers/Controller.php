@@ -17,14 +17,16 @@ para ejecutar el codigo de estos archivos:
 elimina los datos de las tablas)
 
 
-Tabla nueva 'Audit': se registra quien toca la base de datos
+-Tabla 'Audit': se registra quien toca la base de datos
 id
 log (tipo: alta, baja, modificacion)
 action (A, B, M... es sigla de lo anterior)
 user_id
 
-Ximportar libreria DB que permite usar SQL desde el controlador para insertar en la BD (no es factible)
+
 -Hacer un trait donde tengamos metodos para hacer las consultas SQL
+
+Ximportar libreria DB que permite usar SQL desde el controlador para insertar en la BD (no es factible)
 
 
 
