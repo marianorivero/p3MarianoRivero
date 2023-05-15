@@ -12,3 +12,12 @@
 "php artisan cache:clear"
 "php artisan config:clear"
 "php artisan serve"
+
+
+por problema manifest json:
+en package.json escribir linea ("type" : "module",)
+
+
+
+
+
