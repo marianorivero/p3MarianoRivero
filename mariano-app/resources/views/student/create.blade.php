@@ -1,8 +1,8 @@
-@extends('layouts/plantilla')
+{{--@extends('layouts/plantilla')
 
 
 @section('main')
-    
+--}}    
 
     <form action="{{route('students.store')}}" method="POST">
         {{-- toquen --}}
@@ -70,4 +70,4 @@
         <button type="submit">Enviar</button>
     </form>
 
-@endsection
+    {{--@endsection--}}

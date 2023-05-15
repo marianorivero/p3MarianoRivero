@@ -1,6 +1,7 @@
-@extends('layouts/plantilla')
+{{--@extends('layouts/plantilla')
 
 
 @section('main')
+--}}   
     Show
-@endsection
+{{--@endsection--}}

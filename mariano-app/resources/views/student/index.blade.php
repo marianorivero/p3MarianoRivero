@@ -1,6 +1,8 @@
-@extends('layouts/plantilla')
+{{--@extends('layouts/plantilla')
+
 
 @section('main')
+--}}   
 <table border="1">
     <thead> 
         <tr>
@@ -34,7 +36,7 @@
     </tbody>
 
 </table>
-@endsection
+{{--@endsection--}}
 
 
 

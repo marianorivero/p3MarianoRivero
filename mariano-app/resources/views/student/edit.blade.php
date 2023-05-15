@@ -1,7 +1,8 @@
-@extends('layouts/plantilla')
+{{--@extends('layouts/plantilla')
 
 
 @section('main')
+--}}   
     
 {{-- 
     action="students/{{$student[0]->id}}"
@@ -73,4 +74,4 @@
         <button type="submit">Enviar</button>
     </form>
 
-@endsection
+    {{--@endsection--}}
