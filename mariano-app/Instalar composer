@@ -17,6 +17,12 @@
 por problema manifest json:
 en package.json escribir linea ("type" : "module",)
 
+Instalar breeze:
+composer require laravel/breeze --dev 
+php artisan breeze:instal
+npm install 
+npm run dev 
+
 
 
 

@@ -10,6 +10,8 @@ class AuditController extends Controller
     public function index()
     {
         //
+        $audits = Audit::all();
+        return view('audits.index', compact('audits'));
     }
 
     public function create()

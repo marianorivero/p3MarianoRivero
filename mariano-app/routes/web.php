@@ -18,7 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -28,16 +27,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    //Route::resource('students', StudentController::class);
+
+
+    Route::resource('students', [StudentController::class, 'index'])->name('students.index');
+    Route::post( 'students' , [StudentController::class, 'store']->name('students.store') );
+    Route::post( 'students/{id}/edit' , [StudentController::class, 'edit']->name('students.edit') );
+    Route::patch( 'students/{student}', [StudentController::class, 'update']->name('students.update'));
+    Route::delete( 'students/{student}', [StudentController::class, 'destroy']->name('students.destroy'));
+    Route::get('audit', [AuditController::class, 'index']);
 });
 
 
-/*
-Route::resource('students', 'index')->name('students.index');
-Route::post( 'students' , [StudentController::class, 'store']->name('students.store') );
-Route::post( 'students/{id}/edit' , [StudentController::class, 'edit']->name('students.edit') );
-Route::patch( 'students/{student}', [StudentController::class, 'update']->name('students.update'));
-Route::delete( 'students/{student}', [StudentController::class, 'destroy']->name('students.destroy'));
-*/
 
 require __DIR__.'/auth.php';
