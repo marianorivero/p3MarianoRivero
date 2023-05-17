@@ -10,8 +10,8 @@ class Audit extends Model
     use HasFactory;
     
     protected $fillable = [
-        'log',
-        'action',
-        'user_id',
+        'log', //Tipo: alta, baja, modificaion.
+        'action',//A, B, M
+        'user_id',//id del usuario que lo hizo
     ];
 }

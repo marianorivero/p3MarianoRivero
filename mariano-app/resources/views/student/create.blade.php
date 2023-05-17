@@ -8,7 +8,7 @@
         @csrf
 
         <label >
-            Nombre de Materia:
+            Nombre:
             <input type="text" name="name">
         </label>
         @error('name')

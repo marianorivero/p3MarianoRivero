@@ -7,6 +7,7 @@
     <a href="/"><button>Inicio</button></a>
     <br><hr><br>
     
+    <h1>ALUMNOS</h1>
     <table border="1">
         <thead> 
             <tr>

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Traits\AuditTrait;
 
 class StudentController extends Controller
 {
+    use AuditTrait;
 
     public function index()
     {
@@ -36,6 +38,8 @@ class StudentController extends Controller
             'birthday' => $request->birthday,
         ]);
 
+        $this->logChanges('ALTA','A');
+
         return redirect()->route('students.index');
     }
     
@@ -50,7 +54,7 @@ class StudentController extends Controller
     public function edit(string $id)
     {
         $student= Student::where('id',$id)->get();
-        // dd($student);
+        
         return view('student.edit', compact('student'));
     }
 
@@ -70,6 +74,9 @@ class StudentController extends Controller
         $student->dni= $request->dni;
         $student->birthday= $request->birthday;
         $student->save();
+
+        $this->logChanges('MODIFICACION','M');
+
         return redirect()->route('students.index');
     }
 
@@ -77,6 +84,7 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
+        $this->logChanges('BAJA','B');
         return redirect()->route('students.index');
     }
 }

@@ -6,6 +6,7 @@
     <a href="/"><button>Inicio</button></a>
     <br><hr><br>
 
+    <h1>CARRERAS</h1>
     <table border="1">
         <thead>
             <tr>

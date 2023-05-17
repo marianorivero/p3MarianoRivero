@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function () {
     
 
     // Rutas audit
-    Route::get('audit', [AuditController::class, 'index']);
+    Route::get('audits', [AuditController::class, 'index']);
 });
 
 
