@@ -1,12 +1,16 @@
 @extends('layouts/plantilla')
 
 @section('main')
+    <br><br>
+    <a href="/dashboard"><button>Atras</button></a>
+    <a href="/"><button>Inicio</button></a>
+    <br><hr><br>
 
     <table border="1">
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th> <a href="{{route('careers.create')}}"><button type="submit"> Agregar </button></a></th>
+                <th> <a href="{{route('careers.create')}}"><button type="submit"> Agregar Carrera </button></a></th>
             </tr>
         </thead>
         <tbody>

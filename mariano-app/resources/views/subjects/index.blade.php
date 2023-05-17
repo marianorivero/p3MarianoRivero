@@ -3,11 +3,16 @@
 
 @section('main')  
 
+    <br><br>
+    <a href="/dashboard"><button>Atras</button></a>
+    <a href="/"><button>Inicio</button></a>
+    <br><hr><br>
+
     <table border="1">
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th> <a href="{{route('subjects.create')}}"><button type="submit"> Agregar </button></a></th>
+                <th> <a href="{{route('subjects.create')}}"><button type="submit"> Agregar Materia</button></a></th>
             </tr>
         </thead>
         <tbody>
