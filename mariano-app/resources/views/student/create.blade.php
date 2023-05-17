@@ -1,15 +1,14 @@
-{{--@extends('layouts/plantilla')
+@extends('layouts/plantilla')
 
 
-@section('main')
---}}    
+@section('main')  
 
     <form action="{{route('students.store')}}" method="POST">
         {{-- toquen --}}
         @csrf
 
         <label >
-            Nombre:
+            Nombre de Materia:
             <input type="text" name="name">
         </label>
         @error('name')
@@ -70,4 +69,4 @@
         <button type="submit">Enviar</button>
     </form>
 
-    {{--@endsection--}}
+@endsection

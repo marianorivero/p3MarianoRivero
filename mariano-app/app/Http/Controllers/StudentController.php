@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//agrego ruta hacia el Modelo
 use App\Models\Student;
 
 class StudentController extends Controller
@@ -12,17 +11,13 @@ class StudentController extends Controller
     public function index()
     {
 		$students = Student::all()->sortBy('last_name');
-       return view('student.index', compact('students'));
-       
+        return view('student.index', compact('students'));
     }
-
 
     public function create()
     {
-        //
         return view('student.create');
     }
-
 
     public function store(Request $request)
     {   

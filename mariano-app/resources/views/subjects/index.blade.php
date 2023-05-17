@@ -1,21 +1,29 @@
-<table border="1">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($subjects as $subject)
-        <tr>
-            <th>{{$subject->name}}</th>
-            <th><a href="subjects/{{$subject->id}}/edit"><button>Editar</button></a>
-                <form action="subjects/{{$subject->id}}" method="POST">
+@extends('layouts/plantilla')
+
+
+@section('main')  
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th> <a href="{{route('subjects.create')}}"><button type="submit"> Agregar </button></a></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($subjects as $subject)
+            <tr>
+                <th>{{$subject->name}}</th>
+                <th> <a href="subjects/{{$subject->id}}/edit"><button>Editar</button></a></th>
+
+                <form action="{{route('subjects.destroy', $subject)}}" method="post">
                     @csrf
                     @method('delete')
-                <button>Eliminar</button>
+                    <th><button type="submit"> Borrar</button></th>
                 </form>
-            </th>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    
+@endsection

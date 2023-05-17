@@ -1,10 +1,10 @@
-{{--@extends('layouts/plantilla')
+@extends('layouts/plantilla')
 
 
 @section('main')
---}}   
+ 
     
-{{-- 
+    {{-- 
     action="students/{{$student[0]->id}}"
     --}}
     <form action="{{route('students.update', $student[0]->id)}}" method="POST">
@@ -74,4 +74,4 @@
         <button type="submit">Enviar</button>
     </form>
 
-    {{--@endsection--}}
+@endsection

@@ -1,21 +1,28 @@
-<table border="1">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($careers as $career)
-        <tr>
-            <th>{{$career->name}}</th>
-            <th><a href="careers/{{$career->id}}/edit"><button>Editar</button></a>
-                <form action="careers/{{$career->id}}" method="POST">
+@extends('layouts/plantilla')
+
+@section('main')
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th> <a href="{{route('careers.create')}}"><button type="submit"> Agregar </button></a></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($careers as $career)
+            <tr>
+                <th>{{$career->name}}</th>
+                <th> <a href="careers/{{$career->id}}/edit"><button>Editar</button></a></th>
+
+                <form action="{{route('careers.destroy', $career)}}" method="post">
                     @csrf
                     @method('delete')
-                <button>Eliminar</button>
+                    <th><button type="submit"> Borrar</button></th>
                 </form>
-            </th>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+@endsection

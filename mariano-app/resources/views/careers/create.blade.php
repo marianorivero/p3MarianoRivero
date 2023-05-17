@@ -1,16 +1,23 @@
-<form action="{{route('careers.store')}}" method="POST">
-    @csrf
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th><input name="name" type="text"></th>
-            </tr>
-        </tbody>
-    </table>
-    <input type="submit" value="guardar">
-</form>
+@extends('layouts/plantilla')
+
+@section('main')
+
+    <form action="{{route('careers.store')}}" method="POST">
+        {{-- toquen --}}
+        @csrf
+
+        <label >
+            Nombre de carrera:
+            <input type="text" name="name">
+        </label>
+        @error('name')
+            <br>
+            <small>* {{$message}}</small>
+            <br>
+        @enderror
+        <br><br>
+        
+        <button type="submit">Enviar</button>
+    </form>
+
+@endsection

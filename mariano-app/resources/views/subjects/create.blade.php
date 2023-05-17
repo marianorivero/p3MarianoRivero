@@ -1,16 +1,24 @@
-<form action="{{route('subjects.store')}}" method="POST">
-    @csrf
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th><input name="name" type="text"></th>
-            </tr>
-        </tbody>
-    </table>
-    <input type="submit" value="guardar">
-</form>
+@extends('layouts/plantilla')
+
+
+@section('main')
+ 
+    <form action="{{route('subjects.store')}}" method="POST">
+        {{-- toquen --}}
+        @csrf
+
+        <label >
+            Nombre de materia:
+            <input type="text" name="name">
+        </label>
+        @error('name')
+            <br>
+            <small>* {{$message}}</small>
+            <br>
+        @enderror
+        <br><br>
+    
+        <button type="submit">Enviar</button>
+    </form>
+
+@endsection

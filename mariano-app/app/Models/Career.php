@@ -1,8 +1,10 @@
 <?php
-
+/* php artisan make:model --
+*/
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Career extends Model
@@ -12,4 +14,11 @@ class Career extends Model
     protected $fillable = [
         'name',
     ];
+
+    protected function name(): Attribute{
+        return new Attribute(
+            get: fn($value) => ucwords($value),
+            set: fn($value) => strtolower($value)
+        );
+    }
 }
