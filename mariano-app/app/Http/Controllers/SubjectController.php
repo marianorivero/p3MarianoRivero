@@ -11,6 +11,10 @@ class SubjectController extends Controller
 
     public function index()
     {
+        //$subject= Subject::find(1);
+        //dd($subject->student);
+
+
 		$subjects = Subject::all()->sortBy('name');
         return view('subjects.index', compact('subjects'));
     }

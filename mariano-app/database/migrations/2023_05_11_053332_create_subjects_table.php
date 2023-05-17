@@ -12,8 +12,10 @@ return new class extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            
-   
+
+            //clave foranea + al final (->unable)
+            //$table->unsignedBigInteger('student_id');
+
             $table->timestamps();
         });
     }

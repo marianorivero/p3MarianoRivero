@@ -10,8 +10,13 @@ class StudentController extends Controller
 {
     use AuditTrait;
 
+
     public function index()
     {
+        //$student = Student::find(1);
+        //llamo al metodo "subjects" de student
+        //dd($student->subjects);
+        
 		$students = Student::all()->sortBy('last_name');
         return view('student.index', compact('students'));
     }
