@@ -9,7 +9,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+                    {{ __("Estas loggeado!") }}
+                    <br><br>
+                    <a href="/students"><button>Alumnos</button></a><br><hr><br>
+                    <a href="/careers"><button>Carreras</button></a><br><hr><br>
+                    <a href="/subjects"><button>Materias</button></a><br><hr>
                 </div>
             </div>
         </div>
