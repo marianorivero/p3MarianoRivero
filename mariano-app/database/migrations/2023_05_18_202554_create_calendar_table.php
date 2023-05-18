@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('day_id');
             $table->unsignedBigInteger('subject_id');
+            $able->string('time');
             $table->timestamps();
         });
     }

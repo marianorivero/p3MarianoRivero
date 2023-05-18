@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             //$table->unsignedBigInteger('student_id');
             //$table->unsignedBigInteger('subject_id');
-            //$table->...('create_at');
-            $table->timestamps();
+            $table->timestamps();//con esto comparo si coincide con el horario en que se da la materia en calendar, si el alumno en tal materia y tal dia hace asistencia
         });
     }
 
