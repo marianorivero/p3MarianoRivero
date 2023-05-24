@@ -6,14 +6,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
-
-//importar para el join
 //use Illuminate\Database\Eloquent\Relations\HasMany;
-//use App\Models\Subject;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+use App\Models\Subject;
 
 
 class Student extends Model
 {
+ 
     use HasFactory;
 
     protected $fillable = [
@@ -23,6 +24,16 @@ class Student extends Model
         'dni',
         'birthday',
     ];
+
+
+    public function subjects(): BelongsToMany
+    {
+        return $this->belongsToMany(Subject::class, 'student_subjects');
+    }
+
+ 
+     
+    //$student->roles()->attach("1");
 
 
     //metodo para el join

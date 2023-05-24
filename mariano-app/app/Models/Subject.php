@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 //importar para el join
 //use App\Models\Student;
@@ -19,6 +21,13 @@ class Subject extends Model
         'name',
     ];
 
+
+
+    public function students(): BelongsToMany
+    {
+
+        return $this->belongsToMany(Student::class, 'student_subjects');
+    }
 
     //public function student(): BelongsTo
     //{
