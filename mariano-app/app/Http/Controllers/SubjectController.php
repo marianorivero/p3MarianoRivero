@@ -11,20 +11,18 @@ class SubjectController extends Controller
 
     public function index()
     {
-        //$subject= Subject::find(1);
-        //dd($subject->student);
-
-        
-
-
 		$subjects = Subject::all()->sortBy('name');
         return view('subjects.index', compact('subjects'));
     }
 
+
+    
     public function create()
     {
         return view('subjects.create');
     }
+
+
 
     public function store(Request $request)
     {
@@ -39,11 +37,15 @@ class SubjectController extends Controller
         return redirect()->route('subjects.index');
     }
 
+
+
     public function edit(string $id)
     {
         $subject= Subject::where('id', $id)->get();
         return view('subjects.edit', compact('subject'));
     }
+
+
 
     public function update(Request $request, string $id)
     {
@@ -56,6 +58,8 @@ class SubjectController extends Controller
         $subject->save();
         return redirect()->route('subjects.index');
     }
+
+
 
     public function destroy(Subject $subject)
     {

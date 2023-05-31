@@ -13,7 +13,8 @@
                     <br><br>
                     <a href="/students"><button>• Alumnos</button></a><br><hr><br>
                     <a href="/careers"><button>•Carreras</button></a><br><hr><br>
-                    <a href="/subjects"><button>• Materias</button></a><br><hr><br><br><br>
+                    <a href="/subjects"><button>• Materias</button></a><br><hr><br>
+                    <a href="/config"><button>• Configuracion de materias</button></a><br><hr><br><br><br>
                     <a href="/audits"><button>• Info Audit</button></a><br><hr>
                 </div>
             </div>

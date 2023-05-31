@@ -7,6 +7,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\CareerController;
+use App\Http\Controllers\ConfigSubjectsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,9 +55,12 @@ Route::middleware('auth')->group(function () {
     Route::post( 'careers/{id}/edit' , [CareerController::class, 'edit'])->name('careers.edit') ;
     Route::patch( 'careers/{careers}', [CareerController::class, 'update'])->name('careers.update');
     Route::delete( 'careers/{careers}', [CareerController::class, 'destroy'])->name('careers.destroy');
-    
 
-    // Rutas audit
+
+    //Ruta config_subjects
+    Route::get('config', [ConfigSubjectsController::class, 'index']);
+
+    // Ruta audit
     Route::get('audits', [AuditController::class, 'index']);
 });
 

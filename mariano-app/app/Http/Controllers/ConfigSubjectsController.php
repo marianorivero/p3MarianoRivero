@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Calendar;
+use App\Models\ConfigSubject;
 
-
-class CalendarController extends Controller
+class ConfigSubjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $configSubjects = ConfigSubject::all();
+        return view('configSubjects.index', compact('configSubjects'));
         //
     }
 
