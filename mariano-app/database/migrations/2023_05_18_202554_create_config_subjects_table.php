@@ -19,10 +19,10 @@ return new class extends Migration
             $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
 
-            $table->string('dia');//de 1 a 7
+            $table->string('dia');//de lunes a sabado
             $table->string('hora_inicio');
             $table->string('hora_fin');
-            $table->string('hora_limite');
+            $table->string('hora_limite')->nullable();
 
             $table->timestamps();
         });

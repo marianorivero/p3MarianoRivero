@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Subject;
+use App\Models\ConfigSubject;
 
 class SubjectController extends Controller
 {
@@ -12,6 +13,7 @@ class SubjectController extends Controller
     public function index()
     {
 		$subjects = Subject::all()->sortBy('name');
+
         return view('subjects.index', compact('subjects'));
     }
 
@@ -30,8 +32,25 @@ class SubjectController extends Controller
             'name' => 'required',
         ]);
         
+
+
+
         $subject= Subject::create([
             'name' => $request->name,
+        ]);
+
+
+
+        $IdSubject= Subject::latest('id')->first();
+
+        // dd($request);
+
+        $configSubject= ConfigSubject::create([
+            'subject_id'=> $IdSubject->id,
+            'dia'=> $request->dia,
+            'hora_inicio'=> $request->hora_inicio,
+            'hora_fin'=> $request->hora_fin,
+            'hora_limite'=> $request->hora_limite,
         ]);
 
         return redirect()->route('subjects.index');
