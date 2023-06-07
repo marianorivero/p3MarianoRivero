@@ -1,17 +1,13 @@
 <?php
-/* php artisan make:model --
-*/
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\ConfigSubject;
 
-
-//importar para el join
-//use App\Models\Student;
-//use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Subject extends Model
 {
@@ -28,6 +24,22 @@ class Subject extends Model
 
         return $this->belongsToMany(Student::class, 'student_subjects');
     }
+
+
+    public function configSubjects(): HasOne
+    {
+        return $this->hasOne(configSubjects::class, 'config_subjects');
+    }
+
+
+
+
+
+
+
+
+
+
 
     //public function student(): BelongsTo
     //{

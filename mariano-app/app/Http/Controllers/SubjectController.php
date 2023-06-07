@@ -12,6 +12,9 @@ class SubjectController extends Controller
 
     public function index()
     {
+        
+
+        //
 		$subjects = Subject::all()->sortBy('name');
 
         return view('subjects.index', compact('subjects'));
@@ -61,7 +64,9 @@ class SubjectController extends Controller
     public function edit(string $id)
     {
         $subject= Subject::where('id', $id)->get();
-        return view('subjects.edit', compact('subject'));
+        $configSubject = ConfigSubject::where('subject_id',$id)->get();
+        //dd($configSubject);
+        return view('subjects.edit', compact('subject', 'configSubject'));
     }
 
 
