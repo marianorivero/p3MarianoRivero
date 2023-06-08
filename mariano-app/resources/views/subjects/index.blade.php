@@ -19,13 +19,13 @@
         <tbody>
             @foreach ($subjects as $subject)
             <tr>
-                <th>{{$subject->name}}</th>
-                <th> <a href="subjects/{{$subject->id}}/edit"><button>Editar</button></a></th>
+                <td>{{$subject->name}}</td>
+                <td> <a href="subjects/{{$subject->id}}/edit"><button>Editar</button></a></td>
 
                 <form action="{{route('subjects.destroy', $subject)}}" method="post">
                     @csrf
                     @method('delete')
-                    <th><button type="submit"> Borrar</button></th>
+                    <td><button type="submit"> Borrar</button></td>
                 </form>
             </tr>
             @endforeach

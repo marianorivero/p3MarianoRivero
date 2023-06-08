@@ -23,17 +23,17 @@
         <tbody>
             @foreach ($students as $student)
             <tr>
-                <th> {{$student->last_name}} </th>
-                <th> {{$student->name}} </th>
-                <th> {{$student->state}} </th>
-                <th> {{$student->dni}} </th>
-                <th> {{$student->birthday}} </th>
-                <th> <a href="students/{{$student->id}}/edit"><button>Editar</button></a></th>
+                <td> {{$student->last_name}} </td>
+                <td> {{$student->name}} </td>
+                <td> {{$student->state}} </td>
+                <td> {{$student->dni}} </td>
+                <td> {{$student->birthday}} </td>
+                <td> <a href="students/{{$student->id}}/edit"><button>Editar</button></a></td>
 
                 <form action="{{route('students.destroy', $student)}}" method="post">
                     @csrf
                     @method('delete')
-                    <th><button type="submit"> Borrar</button></th>
+                    <td><button type="submit"> Borrar</button></td>
                 </form>
 
             </tr>

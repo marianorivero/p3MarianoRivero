@@ -33,15 +33,6 @@ class Subject extends Model
 
 
 
-
-
-
-    //public function student(): BelongsTo
-    //{
-    //    return $this->belongsTo(Student::class);
-    //}
-
-
     protected function name(): Attribute{
         return new Attribute(
             //get: fn($value) => ucwords($value),

@@ -25,11 +25,11 @@
         <tbody>
             @foreach($configSubjects as $configSubject)
                 <tr>
-                    <th>{{$configSubject->subject_id}}</th>
-                    <th>{{$configSubject->dia}}</th>
-                    <th>{{$configSubject->hora_inicio}}</th>
-                    <th>{{$configSubject->hora_fin}}</th>
-                    <th>{{$configSubject->hora_limite}}</th>
+                    <td>{{$configSubject->subject_id}}</td>
+                    <td>{{$configSubject->dia}}</td>
+                    <td>{{$configSubject->hora_inicio}}</td>
+                    <td>{{$configSubject->hora_fin}}</td>
+                    <td>{{$configSubject->hora_limite}}</td>
                 </tr>
             @endforeach    
         </tbody>

@@ -17,13 +17,13 @@
         <tbody>
             @foreach ($careers as $career)
             <tr>
-                <th>{{$career->name}}</th>
-                <th> <a href="careers/{{$career->id}}/edit"><button>Editar</button></a></th>
+                <td>{{$career->name}}</td>
+                <td> <a href="careers/{{$career->id}}/edit"><button>Editar</button></a></td>
 
                 <form action="{{route('careers.destroy', $career)}}" method="post">
                     @csrf
                     @method('delete')
-                    <th><button type="submit"> Borrar</button></th>
+                    <td><button type="submit"> Borrar</button></td>
                 </form>
             </tr>
             @endforeach

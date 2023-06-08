@@ -19,10 +19,10 @@
         <tbody>
             @foreach ($audits as $audit)
                 <tr>
-                    <th>{{$audit->user_id}}</th>
-                    <th>{{$audit->log}}</th>
-                    <th>{{$audit->action}}</th>
-                    <th>{{$audit->created_at}}</th>
+                    <td>{{$audit->user_id}}</td>
+                    <td>{{$audit->log}}</td>
+                    <td>{{$audit->action}}</td>
+                    <td>{{$audit->created_at}}</td>
                 </tr>
             @endforeach
         </tbody>
