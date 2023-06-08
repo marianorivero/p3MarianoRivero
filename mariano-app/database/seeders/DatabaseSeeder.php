@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             StudentSeeder::class,
             DaySeeder::class,
             SubjectSeeder::class,
-            //UserSeeder::class,
+            UserSeeder::class,
+            ConfigSubjectSeeder::class,
         ]);
 
     }

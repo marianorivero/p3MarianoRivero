@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Day;
 use App\Models\Subject;
 use App\Models\ConfigSubject;
 
@@ -12,11 +13,7 @@ class SubjectController extends Controller
 
     public function index()
     {
-        
-
-        //
 		$subjects = Subject::all()->sortBy('name');
-
         return view('subjects.index', compact('subjects'));
     }
 
@@ -34,19 +31,12 @@ class SubjectController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
-        
-
-
 
         $subject= Subject::create([
             'name' => $request->name,
         ]);
 
-
-
         $IdSubject= Subject::latest('id')->first();
-
-        // dd($request);
 
         $configSubject= ConfigSubject::create([
             'subject_id'=> $IdSubject->id,
@@ -63,10 +53,12 @@ class SubjectController extends Controller
 
     public function edit(string $id)
     {
-        $subject= Subject::where('id', $id)->get();
-        $configSubject = ConfigSubject::where('subject_id',$id)->get();
+        $subject= Subject::find($id);
+        $configSubject = ConfigSubject::find($id);
+        $days = Day::all();
+
         //dd($configSubject);
-        return view('subjects.edit', compact('subject', 'configSubject'));
+        return view('subjects.edit', compact('subject', 'configSubject','days'));
     }
 
 

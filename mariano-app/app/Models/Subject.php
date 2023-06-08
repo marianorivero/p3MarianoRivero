@@ -28,13 +28,8 @@ class Subject extends Model
 
     public function configSubjects(): HasOne
     {
-        return $this->hasOne(configSubjects::class, 'config_subjects');
+        return $this->hasOne(ConfigSubject::class, 'config_subjects');
     }
-
-
-
-
-
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Subject;
 use App\Models\ConfigSubject;
 
 class ConfigSubjectsController extends Controller

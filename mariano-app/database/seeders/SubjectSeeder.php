@@ -17,12 +17,18 @@ class SubjectSeeder extends Seeder
         //
         DB::table('subjects')->insert([
             'name' => 'Programacion 1',
+            'created_at' => '2023-06-08 13:44:18',
+            'updated_at' => '2023-06-08 13:44:18',
         ]);
         DB::table('subjects')->insert([
             'name' => 'Matematica 1',
+            'created_at' => '2023-06-08 13:44:18',
+            'updated_at' => '2023-06-08 13:44:18',
         ]);
         DB::table('subjects')->insert([
             'name' => 'Practica 1',
+            'created_at' => '2023-06-08 13:44:18',
+            'updated_at' => '2023-06-08 13:44:18',
         ]);
     }
 }
