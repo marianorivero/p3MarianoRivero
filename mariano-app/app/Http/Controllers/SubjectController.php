@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\Day;
 use App\Models\Subject;
 use App\Models\ConfigSubject;
@@ -72,6 +73,23 @@ class SubjectController extends Controller
         $subject= Subject::find($id);
         $subject->name= $request->name;
         $subject->save();
+
+        //$configSubject= ConfigSubject::where('subject_id',$id)->get();
+        //$configSubject->dia = $request->dia;
+        //$configSubject->hora_inicio = $request->hora_inicio;
+        //$configSubject->hora_fin = $request->hora_fin;
+        //$configSubject->hora_limite = $request->hora_limite;
+        //$configSubject->save();
+        $configSubject = DB::table('config_subjects')->where('subject_id', $id)
+        ->update(
+            ['dia' => $request->dia],
+            ['hora_inicio' => $request->hora_inicio],
+            ['hora_fin' => $request->hora_fin],
+            ['hora_limite' => $request->hora_limite]
+        );
+
+
+
         return redirect()->route('subjects.index');
     }
 
