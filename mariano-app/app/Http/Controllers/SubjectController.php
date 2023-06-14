@@ -68,27 +68,25 @@ class SubjectController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'dia' => 'required',
+            'hora_inicio' => 'required',
+            'hora_fin' => 'required',
+            'hora_limite' => 'required',
         ]);
 
-        $subject= Subject::find($id);
-        $subject->name= $request->name;
-        $subject->save();
+        $subject = DB::table('subjects')->where('id', $id)
+        ->update([
+            'name' => $request->name
+        ]);
 
-        //$configSubject= ConfigSubject::where('subject_id',$id)->get();
-        //$configSubject->dia = $request->dia;
-        //$configSubject->hora_inicio = $request->hora_inicio;
-        //$configSubject->hora_fin = $request->hora_fin;
-        //$configSubject->hora_limite = $request->hora_limite;
-        //$configSubject->save();
+
         $configSubject = DB::table('config_subjects')->where('subject_id', $id)
-        ->update(
-            ['dia' => $request->dia],
-            ['hora_inicio' => $request->hora_inicio],
-            ['hora_fin' => $request->hora_fin],
-            ['hora_limite' => $request->hora_limite]
-        );
-
-
+        ->update([
+            'dia' => $request->dia,
+            'hora_inicio' => $request->hora_inicio, 
+            'hora_fin' => $request->hora_fin, 
+            'hora_limite' => $request->hora_limite
+        ]);
 
         return redirect()->route('subjects.index');
     }
