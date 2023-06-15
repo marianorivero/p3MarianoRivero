@@ -26,13 +26,7 @@ return new class extends Migration
 
             $table->timestamps();
 
-            //DB::beginTransaction();
-            //try {
-            //    DB::commit();
-            //} catch (\Exception $e) {
-            //    DB::rollback();
-            //    return $e->getMessage();
-            //} 
+
         });
     }
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\AuditController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ConfigSubjectsController;
+use App\Http\Controllers\AssistenceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,10 +59,13 @@ Route::middleware('auth')->group(function () {
 
 
     //Ruta config_subjects
-    Route::get('config', [ConfigSubjectsController::class, 'index']);
+    Route::get('config', [ConfigSubjectsController::class, 'index'])->name('config.index');
 
     // Ruta audit
-    Route::get('audits', [AuditController::class, 'index']);
+    Route::get('audits', [AuditController::class, 'index'])->name('audits.index');
+
+    //Ruta config_subjects
+    Route::get('assistence', [AssistenceController::class, 'index'])->name('assistence.index');
 });
 
 
