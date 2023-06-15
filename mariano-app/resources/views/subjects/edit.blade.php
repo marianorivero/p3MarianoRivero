@@ -51,7 +51,7 @@
             <input type="time" name="hora_limite" id="hora_limite" value="{{$configSubject->hora_limite}}">
         </label><br><br>
 
-
+        <hr><hr><hr>
         <button type="submit">Enviar</button>
     </form>
 

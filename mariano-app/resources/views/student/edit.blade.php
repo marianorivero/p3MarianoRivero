@@ -70,7 +70,7 @@
         @enderror
         <br><br>
         
-
+        <hr><hr><hr>
         <button type="submit">Enviar</button>
     </form>
 

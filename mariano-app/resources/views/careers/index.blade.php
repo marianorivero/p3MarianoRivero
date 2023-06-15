@@ -1,10 +1,12 @@
 @extends('layouts/plantilla')
 
 @section('main')
+    <!-- -->
+    <!-- 
     <br><br>
     <a href="/dashboard"><button>Atras</button></a>
     <a href="/"><button>Inicio</button></a>
-    <br><hr><br>
+    <br><hr><br>-->
 
     <h1>CARRERAS</h1>
     <table border="1">
