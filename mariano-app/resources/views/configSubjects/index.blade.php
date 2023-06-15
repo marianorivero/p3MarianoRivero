@@ -2,12 +2,16 @@
 
 
 @section('main')
+    <!-- 
     <br><br>
     <a href="/dashboard"><button>Atras</button></a>
     <a href="/"><button>Inicio</button></a>
 
-    <br><hr><br>
-    <h1>Config Subjects</h1>
+    <br><hr><br>-->
+
+    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        {{ __('Calendario de materias') }}
+    </h2><br><br>
 
 
     <table border="1">
