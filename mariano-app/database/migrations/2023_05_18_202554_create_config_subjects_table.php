@@ -25,6 +25,14 @@ return new class extends Migration
             $table->string('hora_limite')->nullable();
 
             $table->timestamps();
+
+            //DB::beginTransaction();
+            //try {
+            //    DB::commit();
+            //} catch (\Exception $e) {
+            //    DB::rollback();
+            //    return $e->getMessage();
+            //} 
         });
     }
 
