@@ -17,8 +17,9 @@ class StudentController extends Controller
         //$student->subjects()->attach([2]);//insertar lo anterior por id de materia
 
 
-		$students = Student::all()->sortBy('last_name');
-        return view('student.index', compact('students'));
+		$students = Student::all();//->sortBy('last_name')
+        return $students->ToJson();
+        //return view('student.index', compact('students'));
     }
 
     public function create()

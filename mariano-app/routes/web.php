@@ -35,39 +35,39 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    // Rutas student
-    Route::resource('students', StudentController::class);
-    Route::post( 'students', [StudentController::class, 'store'])->name('students.store') ;
-    Route::post( 'students/{id}/edit' , [StudentController::class, 'edit'])->name('students.edit') ;
-    Route::patch( 'students/{student}', [StudentController::class, 'update'])->name('students.update');
-    Route::delete( 'students/{student}', [StudentController::class, 'destroy'])->name('students.destroy');
-
-
-    // Rutas subjects
-    Route::resource('subjects', SubjectController::class);
-    Route::post( 'subjects', [SubjectController::class, 'store'])->name('subjects.store') ;
-    Route::post( 'subjects/{id}/edit' , [SubjectController::class, 'edit'])->name('subjects.edit') ;
-    Route::patch( 'subjects/{subjects}', [SubjectController::class, 'update'])->name('subjects.update');
-    Route::delete( 'subjects/{subjects}', [SubjectController::class, 'destroy'])->name('subjects.destroy');
-
-    // Rutas careers
-    Route::resource('careers', CareerController::class);
-    Route::post( 'careers', [CareerController::class, 'store'])->name('careers.store') ;
-    Route::post( 'careers/{id}/edit' , [CareerController::class, 'edit'])->name('careers.edit') ;
-    Route::patch( 'careers/{careers}', [CareerController::class, 'update'])->name('careers.update');
-    Route::delete( 'careers/{careers}', [CareerController::class, 'destroy'])->name('careers.destroy');
-
-
-    //Ruta config_subjects
-    Route::get('config', [ConfigSubjectsController::class, 'index'])->name('config.index');
-
-    // Ruta audit
-    Route::get('audits', [AuditController::class, 'index'])->name('audits.index');
-
-    //Ruta config_subjects
-    Route::get('assistence', [AssistenceController::class, 'index'])->name('assistence.index');
 });
 
 
-
 require __DIR__.'/auth.php';
+
+// Rutas student
+Route::resource('students', StudentController::class);
+Route::post( 'students', [StudentController::class, 'store'])->name('students.store') ;
+Route::post( 'students/{id}/edit' , [StudentController::class, 'edit'])->name('students.edit') ;
+Route::patch( 'students/{student}', [StudentController::class, 'update'])->name('students.update');
+Route::delete( 'students/{student}', [StudentController::class, 'destroy'])->name('students.destroy');
+
+
+// Rutas subjects
+Route::resource('subjects', SubjectController::class);
+Route::post( 'subjects', [SubjectController::class, 'store'])->name('subjects.store') ;
+Route::post( 'subjects/{id}/edit' , [SubjectController::class, 'edit'])->name('subjects.edit') ;
+Route::patch( 'subjects/{subjects}', [SubjectController::class, 'update'])->name('subjects.update');
+Route::delete( 'subjects/{subjects}', [SubjectController::class, 'destroy'])->name('subjects.destroy');
+
+// Rutas careers
+Route::resource('careers', CareerController::class);
+Route::post( 'careers', [CareerController::class, 'store'])->name('careers.store') ;
+Route::post( 'careers/{id}/edit' , [CareerController::class, 'edit'])->name('careers.edit') ;
+Route::patch( 'careers/{careers}', [CareerController::class, 'update'])->name('careers.update');
+Route::delete( 'careers/{careers}', [CareerController::class, 'destroy'])->name('careers.destroy');
+
+
+//Ruta config_subjects
+Route::get('config', [ConfigSubjectsController::class, 'index'])->name('config.index');
+
+// Ruta audit
+Route::get('audits', [AuditController::class, 'index'])->name('audits.index');
+
+//Ruta config_subjects
+Route::get('assistence', [AssistenceController::class, 'index'])->name('assistence.index');
