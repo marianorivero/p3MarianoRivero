@@ -18,7 +18,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('assistence.index')">
+                    {{-- <x-nav-link :href="route('assistence.index')">
                         Asistencia
                     </x-nav-link>
 
@@ -44,7 +44,7 @@
 
                     <x-nav-link :href="route('audits.index')">
                         Info. Audits
-                    </x-nav-link>
+                    </x-nav-link> --}}
 
                 </div>
             </div>

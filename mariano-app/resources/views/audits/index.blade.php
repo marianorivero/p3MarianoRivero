@@ -3,14 +3,11 @@
 
 @section('main')
     <!-- -->
-    <!-- 
+    
     <br><br>
     <a href="/dashboard"><button>Atras</button></a>
     <a href="/"><button>Inicio</button></a>
-    <br><hr><br>-->
-    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-    {{ __('Audit sobre alumnos') }}
-    </h2><br><br>
+    <br><hr><br>
 
     <table border="1">
         <thead>
