@@ -40,14 +40,13 @@ class AssistenceController extends Controller
         foreach ($subjects as $subject){
             
             $diaActual = (date('w'));
-            $diaCursada = $subject->configSubjects->dia;
+            $diaCursada = $subject->configSubjects->dia;//dia de la materia en posicion actual del foreach(expresada como numero)
 
             
             if ($diaActual == $diaCursada) {
                 dd("hoy cursa ".$subject->name);
-            } 
-            
-            //dd($subject->configSubjects->dia);//dia de la materia en posicion actual del foreach(expresada como numero)
+            } //else...
+
         }
     }
 
