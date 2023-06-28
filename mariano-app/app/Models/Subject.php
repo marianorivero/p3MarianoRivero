@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use App\Models\ConfigSubject;
 
 
 class Subject extends Model
@@ -28,7 +27,7 @@ class Subject extends Model
 
     public function configSubjects(): HasOne
     {
-        return $this->hasOne(ConfigSubject::class, 'config_subjects');
+        return $this->hasOne(ConfigSubject::class);
     }
 
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Subject;
+
 
 
 class ConfigSubject extends Model
@@ -23,7 +23,7 @@ class ConfigSubject extends Model
 
     public function subjects(): BelongsTo
     {
-        return $this->belongsTo(Subject::class, 'subjects');
+        return $this->belongsTo(Subject::class);
     }
 
 

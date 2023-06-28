@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Assistence;
 use Illuminate\Http\Request;
+use App\Models\Assistence;
 use App\Models\Student;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 
 
 class AssistenceController extends Controller
@@ -28,12 +28,18 @@ class AssistenceController extends Controller
  
     public function store(Request $request)
     {
-        $student = Student::where("dni",$request->dni)->first();
-        dd($student->name);
-        $classes = $student->subjects;
-        // $actualDay = date("Y-m-d h:i:s");
+        // $actualDay = date("Y-m-d h:i:s"); //configurarlo con horario local
         // dd($actualDay);
-        //para cada clase en la que este registrada el alumno se buscara si coincide el horario actual y el horarario en que se imparte la clase, si hay coincidencia se marca la asistencia y se guarda la informacion en la tabla asistencia
+
+
+        $student = Student::where("dni",$request->dni)->first();
+        $subjects = $student->subjects;
+
+
+        //Para cada clase ($classes) en la que este registrada el alumno se buscara si coincide el horario actual y el horarario en que se imparte la clase, si hay coincidencia se marca la asistencia y se guarda la informacion en la tabla asistencia.
+        foreach ($subjects as $subject){
+            dd($subject->configSubjects);//->dia
+        }
     }
 
  
@@ -60,3 +66,32 @@ class AssistenceController extends Controller
         //
     }
 }
+
+// $time = Carbon::now()->format('H:i:s'); //hora actual
+// $day = date('w'); //dia actual
+
+// foreach ($materias as $key =>$materia){
+//     //dd($materia->settingSubjects);
+//     $config = $materias[$key]->settingSubjects; //meto en una variable la config de la primer materia recorrida
+//    //dd($config);
+   
+//    foreach ($config as $c){
+   
+//     $dia = $c->day; 
+//     $start_time = $c->start_time;
+//     $limit_time = $c->limit_time;
+//     $this->validaYGuardaAsistencia($day,$dia,$time,$start_time,$limit_time,$estudiante,$materia);
+//    }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
