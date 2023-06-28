@@ -2,11 +2,13 @@
 
 2- abrir una terminal dentro del proyecto y usar el comando "composer install"
 
-3- dentro del proyecto crear un archivo .env (de momento vacío)
+3- ejecutar "npm install"
 
-4- buscar un archivo llamado ".env.example", copiar todo su contenido y pegarlo en el archivo .env 
+4- dentro del proyecto crear un archivo .env (de momento vacío)
 
-5- abrir una terminal dentro del proyecto y utilizar los siguientes comando:
+5- buscar un archivo llamado ".env.example", copiar todo su contenido y pegarlo en el archivo .env 
+
+6- abrir una terminal dentro del proyecto y utilizar los siguientes comando:
 
 "php artisan key:generate"
 "php artisan cache:clear"
