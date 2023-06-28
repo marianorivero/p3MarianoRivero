@@ -6,7 +6,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Assistence;
 use App\Models\Student;
-// use Illuminate\Support\Facades\DB;
+use App\Models\Day;
+use Illuminate\Support\Facades\DB;
 
 
 class AssistenceController extends Controller
@@ -28,17 +29,25 @@ class AssistenceController extends Controller
  
     public function store(Request $request)
     {
-        // $actualDay = date("Y-m-d h:i:s"); //configurarlo con horario local
-        // dd($actualDay);
-
-
         $student = Student::where("dni",$request->dni)->first();
         $subjects = $student->subjects;
 
 
-        //Para cada clase ($classes) en la que este registrada el alumno se buscara si coincide el horario actual y el horarario en que se imparte la clase, si hay coincidencia se marca la asistencia y se guarda la informacion en la tabla asistencia.
+        //Para cada clase ($classes) en la que este registrada el alumno se buscara si 
+        //coincide el horario actual y el horarario en que se imparte la clase, 
+        //si hay coincidencia se marca la asistencia y se guarda la informacion en la tabla asistencia
+
         foreach ($subjects as $subject){
-            dd($subject->configSubjects);//->dia
+            
+            $diaActual = (date('w'));
+            $diaCursada = $subject->configSubjects->dia;
+
+            
+            if ($diaActual == $diaCursada) {
+                dd("hoy cursa ".$subject->name);
+            } 
+            
+            //dd($subject->configSubjects->dia);//dia de la materia en posicion actual del foreach(expresada como numero)
         }
     }
 

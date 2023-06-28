@@ -26,5 +26,10 @@ class ConfigSubject extends Model
         return $this->belongsTo(Subject::class);
     }
 
+    public function day(): BelongsTo
+    {
+        return $this->belongsTo(Day::class);
+    }
+
 
 }
