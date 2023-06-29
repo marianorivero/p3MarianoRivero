@@ -27,7 +27,7 @@
             Dia: 
             <select name="dia" id="dia">
                 @foreach ($days as $day)
-                  <option value="{{ $day->name }}" {{ ($day->name == $configSubject->dia ? "selected" : "") }}> {{ $day->name }}</option> 
+                  <option value="{{ $day->id }}" {{ ($day->id == $configSubject->dia ? "selected" : "") }}> {{ $day->name }}</option> 
                 @endforeach
             </select>
         </label><br><br>
@@ -51,7 +51,7 @@
             <input type="time" name="hora_limite" id="hora_limite" value="{{$configSubject->hora_limite}}">
         </label><br><br>
 
-        <hr><hr><hr>
+        
         <button type="submit">Enviar</button>
     </form>
 

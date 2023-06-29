@@ -22,12 +22,12 @@
         <label>
             Dia: 
             <select name="dia" id="dia">
-                <option value="Lunes">Lunes</option>
-                <option value="Martes">Martes</option>
-                <option value="Miercoles">Miercoles</option>
-                <option value="Jueves">Jueves</option>
-                <option value="Viernes">Viernes</option>
-                <option value="Sabado">Sabado</option>
+                <option value="1">Lunes</option>
+                <option value="2">Martes</option>
+                <option value="3">Miercoles</option>
+                <option value="4">Jueves</option>
+                <option value="5">Viernes</option>
+                <option value="6">Sabado</option>
 
             </select>
         </label><br><br>
@@ -49,7 +49,7 @@
             <input type="time" name="hora_limite" id="hora_limite">
         </label><br><br>
 
-        <hr><hr><hr>
+        
         <button type="submit">Enviar</button>
     </form>
 

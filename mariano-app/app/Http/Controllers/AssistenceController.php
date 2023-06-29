@@ -8,6 +8,7 @@ use App\Models\Assistence;
 use App\Models\Student;
 use App\Models\Day;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 class AssistenceController extends Controller
@@ -29,24 +30,38 @@ class AssistenceController extends Controller
  
     public function store(Request $request)
     {
-        $student = Student::where("dni",$request->dni)->first();
-        $subjects = $student->subjects;
+        $student = Student::where("dni",$request->dni)->first();//busco el estudiante que ingresaron por dni
+        
+        if ($student) { //si el estudiante se encuentra en la base de datos...
 
+            ///$x =Carbon::now();
 
-        //Para cada clase ($classes) en la que este registrada el alumno se buscara si 
-        //coincide el horario actual y el horarario en que se imparte la clase, 
-        //si hay coincidencia se marca la asistencia y se guarda la informacion en la tabla asistencia
+            $subjects = $student->subjects;//busco las materias que el estudiante cursa
 
-        foreach ($subjects as $subject){
+            if ( !empty($subjects[0]) ) { //si el alumno cursa al menos una materia, es decir, si $subjects NO esta vacio 
             
-            $diaActual = (date('w'));
-            $diaCursada = $subject->configSubjects->dia;//dia de la materia en posicion actual del foreach(expresada como numero)
-
-            
-            if ($diaActual == $diaCursada) {
-                dd("hoy cursa ".$subject->name);
-            } //else...
-
+                foreach ($subjects as $subject){
+                    
+                    $diaActual = date('w');
+                    $diaCursada = $subject->configSubjects->dia;//dia de la materia en posicion actual del foreach(expresada como numero)
+                            
+                    if ($diaActual == $diaCursada) {
+                        
+                        DB::table('assistences')->insert([ //registrar la asistencia a la materia correspondiente
+                            'subject_id'=>$subject->id,
+                            'student_id'=>$student->id,
+                        ]);
+        
+                        return redirect()->route('assistence.index');
+                    }else{
+                        dd("El estudiante seleccionado hoy no cursa ninguna materia");
+                    }
+                }
+            } else {
+                dd("El estudiante seleccionado no cursa ninguna materia");
+            }
+        } else {//si el estudiante NO se encuentra en la base de datos...
+            dd("Estudiante no encontrado");
         }
     }
 
@@ -75,22 +90,7 @@ class AssistenceController extends Controller
     }
 }
 
-// $time = Carbon::now()->format('H:i:s'); //hora actual
-// $day = date('w'); //dia actual
 
-// foreach ($materias as $key =>$materia){
-//     //dd($materia->settingSubjects);
-//     $config = $materias[$key]->settingSubjects; //meto en una variable la config de la primer materia recorrida
-//    //dd($config);
-   
-//    foreach ($config as $c){
-   
-//     $dia = $c->day; 
-//     $start_time = $c->start_time;
-//     $limit_time = $c->limit_time;
-//     $this->validaYGuardaAsistencia($day,$dia,$time,$start_time,$limit_time,$estudiante,$materia);
-//    }
-// }
 
 
 
