@@ -17,6 +17,7 @@ class ConfigSubjectsController extends Controller
         //$configSubjects = ConfigSubject::all();
 
         $configSubjects = DB::table('config_subjects')
+            ->orderBy('config_subjects.id')
             ->join('subjects', 'config_subjects.subject_id', '=', 'subjects.id')
             ->join('days', 'config_subjects.dia', '=', 'days.id')
             ->select('subjects.name', 'days.nombre', 'config_subjects.hora_inicio', 'config_subjects.hora_fin', 'config_subjects.hora_limite')

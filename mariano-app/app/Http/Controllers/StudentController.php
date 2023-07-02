@@ -13,9 +13,8 @@ class StudentController extends Controller
 
     public function index()
     {
-        //$student = Student::find(10);//buscar por id un alumno
+        //$student = Student::find(10);
         //$student->subjects()->attach([2]);//insertar lo anterior por id de materia
-
 
 		$students = Student::all()->sortBy('last_name');
         //return $students->ToJson();

@@ -66,26 +66,26 @@ class SubjectController extends Controller
     public function edit(string $id)
     {
         $subject= Subject::find($id);
-        $configSubject = ConfigSubject::find($id);
+        $configSubjects = DB::table('config_subjects')->where('subject_id', $id)->get();
         $days = Day::all();
 
-        //dd($configSubject);
-        return view('subjects.edit', compact('subject', 'configSubject','days'));
+
+        return view('subjects.edit', compact('subject', 'configSubjects','days'));
     }
 
 
 
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'dia' => 'required',
-            'hora_inicio' => 'required',
-            'hora_fin' => 'required',
-            'hora_limite' => 'required',
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'dia' => 'required',
+        //     'hora_inicio' => 'required',
+        //     'hora_fin' => 'required',
+        // ]);
 
-        
+        dd($request->dias);
+
         DB::beginTransaction();
         try {
 
