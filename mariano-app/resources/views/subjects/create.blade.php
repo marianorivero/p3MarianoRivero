@@ -19,7 +19,30 @@
         @enderror
         <br><br>
         
-        <label>
+
+        @foreach ($days as $day)
+            <div>
+                <label>
+                    {{$day->nombre}}: 
+                    <input type="checkbox" name="dias[]" value={{$day->id}}>            
+                </label>
+
+                <label>
+                    Hora inicio: <input type="time" name="hora_inicio[]">
+                </label>
+
+                <label>
+                    Hora fin: <input type="time" name="hora_fin[]">
+                </label>
+
+                <label>
+                    Hora limite: <input type="time" name="hora_limite[]">
+                </label>
+            </div>
+            <br>
+        @endforeach
+
+        {{-- <label>
             Dia: 
             <select name="dia" id="dia">
                 <option value="1">Lunes</option>
@@ -47,7 +70,7 @@
         <label>
             Hora limite de llegada: 
             <input type="time" name="hora_limite" id="hora_limite">
-        </label><br><br>
+        </label><br><br> --}}
 
         
         <button type="submit">Enviar</button>

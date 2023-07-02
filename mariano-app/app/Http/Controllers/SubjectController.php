@@ -22,7 +22,8 @@ class SubjectController extends Controller
     
     public function create()
     {
-        return view('subjects.create');
+        $days = Day::all();
+        return view('subjects.create', compact('days'));
     }
 
 
@@ -33,6 +34,7 @@ class SubjectController extends Controller
             'name' => 'required',
         ]);
 
+        // dd($request->name);
         
         DB::beginTransaction();
         try {
@@ -40,16 +42,18 @@ class SubjectController extends Controller
             $subject= Subject::create([
                 'name' => $request->name,
             ]);
-    
             $IdSubject= Subject::latest('id')->first();
     
-            $configSubject= ConfigSubject::create([
-                'subject_id'=> $IdSubject->id,
-                'dia'=> $request->dia,
-                'hora_inicio'=> $request->hora_inicio,
-                'hora_fin'=> $request->hora_fin,
-                'hora_limite'=> $request->hora_limite,
-            ]);
+            foreach ($request->dias as $key => $dia) {
+                
+                $configSubject= ConfigSubject::create([
+                    'subject_id'=> $IdSubject->id,
+                    'dia'=> $dia,
+                    'hora_inicio'=> $request->hora_inicio[$key],
+                    'hora_fin'=> $request->hora_fin[$key],
+                    'hora_limite'=> $request->hora_limite[$key],
+                ]);
+            }
 
             DB::commit();
         } catch (\Exception $e) {
