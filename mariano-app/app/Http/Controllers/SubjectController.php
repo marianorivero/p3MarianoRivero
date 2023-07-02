@@ -34,7 +34,6 @@ class SubjectController extends Controller
             'name' => 'required',
         ]);
 
-        // dd($request->name);
         
         DB::beginTransaction();
         try {
@@ -44,24 +43,21 @@ class SubjectController extends Controller
             ]);
             $IdSubject= Subject::latest('id')->first();
     
-            foreach ($request->dias as $key => $dia) {
-                
+            foreach ($request->dias as $dia) {
+
                 $configSubject= ConfigSubject::create([
                     'subject_id'=> $IdSubject->id,
                     'dia'=> $dia,
-                    'hora_inicio'=> $request->hora_inicio[$key],
-                    'hora_fin'=> $request->hora_fin[$key],
-                    'hora_limite'=> $request->hora_limite[$key],
+                    'hora_inicio'=> $request->hora_inicio[$dia-1],
+                    'hora_fin'=> $request->hora_fin[$dia-1],
+                    'hora_limite'=> $request->hora_limite[$dia-1],
                 ]);
             }
-
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
             return $e->getMessage();
         }
-        
-
         return redirect()->route('subjects.index');
     }
 

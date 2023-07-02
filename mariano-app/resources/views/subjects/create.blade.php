@@ -8,7 +8,7 @@
         @csrf
 
         <label >
-            Nombre de materia:
+            <b>Nombre de materia</b>:
             <input type="text" name="name">
         </label>
 
@@ -18,30 +18,34 @@
             <br>
         @enderror
         <br><br>
+        <b>HORARIOS</b>
         
 
         @foreach ($days as $day)
-            <div>
-                <label>
-                    {{$day->nombre}}: 
-                    <input type="checkbox" name="dias[]" value={{$day->id}}>            
-                </label>
+            <div style = "padding-left: 10px; padding-top: 7px; padding-bottom: 7px; margin-bottom: 5px; width: 20%; border: steelblue solid 1px;">
 
+                <label>
+                    <b>{{$day->nombre}}</b>
+                        <input type="checkbox" name="dias[]" value={{$day->id}}>            
+                </label><br>
+                        
                 <label>
                     Hora inicio: <input type="time" name="hora_inicio[]">
-                </label>
-
+                </label><br>
+                    
                 <label>
                     Hora fin: <input type="time" name="hora_fin[]">
-                </label>
-
+                </label><br>
+                    
                 <label>
                     Hora limite: <input type="time" name="hora_limite[]">
                 </label>
-            </div>
-            <br>
-        @endforeach
 
+            </div>
+            
+            
+        @endforeach
+        
         {{-- <label>
             Dia: 
             <select name="dia" id="dia">
