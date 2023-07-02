@@ -17,8 +17,7 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-        Student::factory(20)->create();
-
+        
         DB::table('students')->insert([
             'name' => 'Mariano',
             'last_name' => 'Rivero',
@@ -35,8 +34,24 @@ class StudentSeeder extends Seeder
             'created_at' => '2023-06-08 13:44:18',
             'updated_at' => '2023-06-08 13:44:18',
         ]);
-
-
+        DB::table('students')->insert([
+            'name' => 'Pedro',
+            'last_name' => 'Marconi',
+            'dni' => '3',
+            'birthday' => '1995-02-01',
+            'created_at' => '2023-06-08 13:44:18',
+            'updated_at' => '2023-06-08 13:44:18',
+        ]);
+        DB::table('students')->insert([
+            'name' => 'Adrian',
+            'last_name' => 'Pescara',
+            'dni' => '4',
+            'birthday' => '1999-12-28',
+            'created_at' => '2023-06-08 13:44:18',
+            'updated_at' => '2023-06-08 13:44:18',
+        ]);
+        
+        Student::factory(6)->create();
     }
 }
 

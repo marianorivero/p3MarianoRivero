@@ -6,8 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use App\Models\Subject;
 
@@ -31,25 +31,19 @@ class Student extends Model
         return $this->belongsToMany(Subject::class, 'student_subjects');
     }
 
- 
+    public function assistence(): HasMany
+    {
+        return $this->hasMany(Assistence::class);
+    }
+
+
+
      
     //$student->roles()->attach("1");
-
-
-    //metodo para el join
-    //public function subjects(): HasMany
-    //{
-    //    return $this->hasMany(Subject::class);
-    //}
-
-
-
-
-
     protected function name(): Attribute{
         return new Attribute(
             //get: fn($value) => ucwords($value),
-            //set: fn($value) => strtolower($value)
+            set: fn($value) => strtolower($value)
         );
     }
 

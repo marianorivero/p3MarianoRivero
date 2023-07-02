@@ -29,7 +29,7 @@
         <tbody>
             @foreach($configSubjects as $configSubject)
                 <tr>
-                    <td>{{$configSubject->subject_id}}</td>
+                    <td>{{$configSubject->name}}</td>
                     <td>{{$configSubject->dia}}</td>
                     <td>{{$configSubject->hora_inicio}}</td>
                     <td>{{$configSubject->hora_fin}}</td>

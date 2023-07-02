@@ -20,7 +20,6 @@ class ConfigSubject extends Model
         'hora_limite',
     ];
 
-
     public function subjects(): BelongsTo
     {
         return $this->belongsTo(Subject::class);

@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
 
-    //los datos se cargan cuando se inserta una materia: de esto solo se hace la vista
     public function up(): void
     {
         Schema::create('config_subjects', function (Blueprint $table) {
@@ -19,7 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('subject_id');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
 
-            //$table->string('dia');//de lunes a sabado
+            // $table->string('dia');//de lunes a sabado
             $table->unsignedBigInteger('dia');
             $table->foreign('dia')->references('id')->on('days')->onDelete('cascade');
             
@@ -33,9 +29,7 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
         Schema::dropIfExists('calendar');

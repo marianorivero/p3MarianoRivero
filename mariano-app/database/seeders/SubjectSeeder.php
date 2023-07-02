@@ -26,7 +26,27 @@ class SubjectSeeder extends Seeder
             'updated_at' => '2023-06-08 13:44:18',
         ]);
         DB::table('subjects')->insert([
-            'name' => 'Practica 1',
+            'name' => 'Practica Profesionalizante 1',
+            'created_at' => '2023-06-08 13:44:18',
+            'updated_at' => '2023-06-08 13:44:18',
+        ]);
+        DB::table('subjects')->insert([
+            'name' => 'Seminario 1',
+            'created_at' => '2023-06-08 13:44:18',
+            'updated_at' => '2023-06-08 13:44:18',
+        ]);
+        DB::table('subjects')->insert([
+            'name' => 'Derechos Humanos',
+            'created_at' => '2023-06-08 13:44:18',
+            'updated_at' => '2023-06-08 13:44:18',
+        ]);
+        DB::table('subjects')->insert([
+            'name' => 'Legislacion Informatica',
+            'created_at' => '2023-06-08 13:44:18',
+            'updated_at' => '2023-06-08 13:44:18',
+        ]);
+        DB::table('subjects')->insert([
+            'name' => 'Base de Datos',
             'created_at' => '2023-06-08 13:44:18',
             'updated_at' => '2023-06-08 13:44:18',
         ]);
