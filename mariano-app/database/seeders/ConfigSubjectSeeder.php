@@ -66,16 +66,16 @@ class ConfigSubjectSeeder extends Seeder
             'dia'=>'6',
             'hora_inicio'=>'21:00',
             'hora_fin'=>'23:59',
-            //'hora_limite'=>'23:15',
+            'hora_limite'=>'23:15',
             'created_at' => '2023-06-08 13:44:18',
             'updated_at' => '2023-06-08 13:44:18',
         ]);
         DB::table('config_subjects')->insert([
             'subject_id'=>'7',
             'dia'=>'7',
-            'hora_inicio'=>'21:00',
+            'hora_inicio'=>'00:10',
             'hora_fin'=>'23:00',
-            'hora_limite'=>'11:15',
+            //'hora_limite'=>'11:15',
             'created_at' => '2023-06-08 13:44:18',
             'updated_at' => '2023-06-08 13:44:18',
         ]);

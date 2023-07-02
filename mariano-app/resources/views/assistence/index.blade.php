@@ -19,20 +19,19 @@
     <table border="1">
         <thead>
             <tr>
-                <th>Estudiante (id)</th>
-                <th>Materia(id)</th>
-                <th>dia()</th>
-                <th>horario()</th>
+                <th>Estudiante</th>
+                <th>Materia</th>
+                <th>Fecha y Hora</th>
+
 
             </tr>
         </thead>
         <tbody>
-            @foreach ($assistence as $a)
+            @foreach ($assistences as $assistence)
                 <tr>
-                    <td>{{$a->student_id}}</td>
-                    <td>{{$a->subject_id}}</td>
-                    <td>*</td>
-                    <td>*</td>
+                    <td>{{$assistence->last_name}}</td>
+                    <td>{{$assistence->name}}</td>
+                    <td>{{$assistence->created_at}}</td>
                 </tr>
             @endforeach
         </tbody>

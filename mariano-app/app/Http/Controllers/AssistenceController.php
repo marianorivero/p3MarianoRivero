@@ -17,11 +17,18 @@ class AssistenceController extends Controller
 
     public function index()
     {
-        $assistence = Assistence::all();
+        //$assistence = Assistence::all();
 
         // $aa = $assistence[0]->students;
         // dd($aa);
-        return view('assistence.index', compact('assistence'));
+
+        $assistences = DB::table('assistences')
+            ->join('students', 'assistences.student_id', '=', 'students.id')
+            ->join('subjects', 'assistences.subject_id', '=', 'subjects.id')
+            ->select('students.last_name', 'subjects.name', 'assistences.created_at')
+            ->get();
+
+        return view('assistence.index', compact('assistences'));
     }
 
 
@@ -37,46 +44,50 @@ class AssistenceController extends Controller
         
         if ($student) { //si el estudiante se encuentra en la base de datos...
 
-            $subjects = $student->subjects;//busco las materias que el estudiante cursa  
+            $subjects = $student->subjects;  
 
             if ( !empty($subjects[0]) ) { //si el alumno cursa al menos una materia, es decir, si $subjects NO esta vacio 
                         
                 foreach ($subjects as $subject){
-                            
-                    $diaActual = date('w');
-                    $diaCursada = $subject->configSubjects[0]->dia;//dia de la materia en posicion actual
-                    $horaActual = Carbon::parse(date('H:i'));
-                    $horaInicio = Carbon::parse($subject->configSubjects[0]->hora_inicio); //seteo hora de inicio de materia
-                    $horarioLimite = $subject->configSubjects[0]->hora_limite;
+                    
+                    $configSubjects = $subject->configSubjects;
 
-                    if (empty($horarioLimite)) {//si no hay una hora limite
-                        $horaFin = Carbon::parse($subject->configSubjects[0]->hora_fin);
-                    } else {
-                        $horaFin = Carbon::parse($subject->configSubjects[0]->hora_limite);
-                    }
+                    foreach ($configSubjects as $configSubject) {
 
-                    $estaEnHorario = $horaActual->between($horaInicio, $horaFin);
-
-                    if ( ($diaActual == $diaCursada) && $estaEnHorario) {
+                        $diaActual = date('N');
+                        $diaCursada = $configSubject->dia;
+    
+                        $horaActual = Carbon::parse(date('H:i'));
+                        $horaInicio = Carbon::parse($configSubject->hora_inicio);
+                        $horarioLimite = $configSubject->hora_limite;
                         
-                        DB::table('assistences')->insert([ //registrar la asistencia a la materia correspondiente
-                            'subject_id'=>$subject->id,
-                            'student_id'=>$student->id,
-                        ]);
-                        return redirect()->route('assistence.index');
-                    }else{
-                        echo("El estudiante seleccionado no cursa en este momento. . . ");
+                        if (empty($horarioLimite)) {//defino la hora limite
+                            $horaFin = Carbon::parse($configSubject->hora_fin);
+                        } else {
+                            $horaFin = Carbon::parse($configSubject->hora_limite);
+                        }
+
+                        $estaEnHorario = $horaActual->between($horaInicio, $horaFin);
+                    
+                        if ( ($diaActual == $diaCursada) && $estaEnHorario) {
+                            DB::table('assistences')->insert([
+                                'subject_id'=>$subject->id,
+                                'student_id'=>$student->id,
+                            ]);
+                            return redirect()->route('assistence.index');
+                        }else{
+                            echo("El estudiante seleccionado no cursa en este momento. . . ");
+                        } 
                     }  
                 }
             } else {
                 echo("El estudiante seleccionado no esta anotado en ninguna materia. . . ");
             }
-        } else {//si el estudiante NO se encuentra en la base de datos...
+        } else {
             echo("Estudiante no encontrado");
         }
     }
 
- 
     public function show(string $id)
     {
         //
