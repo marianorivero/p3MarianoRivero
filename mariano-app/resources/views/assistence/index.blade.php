@@ -29,7 +29,7 @@
         <tbody>
             @foreach ($assistences as $assistence)
                 <tr>
-                    <td>{{$assistence->last_name}}</td>
+                    <td>{{$assistence->last_name}} {{$assistence->first_name}}</td>
                     <td>{{$assistence->name}}</td>
                     <td>{{$assistence->created_at}}</td>
                 </tr>

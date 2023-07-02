@@ -26,7 +26,7 @@
             @foreach ($students as $student)
             <tr>
                 <td> {{$student->last_name}} </td>
-                <td> {{$student->name}} </td>
+                <td> {{$student->first_name}} </td>
                 <td> {{$student->state}} </td>
                 <td> {{$student->dni}} </td>
                 <td> {{$student->birthday}} </td>

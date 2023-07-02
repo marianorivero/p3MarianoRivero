@@ -25,8 +25,9 @@ class AssistenceController extends Controller
         $assistences = DB::table('assistences')
             ->join('students', 'assistences.student_id', '=', 'students.id')
             ->join('subjects', 'assistences.subject_id', '=', 'subjects.id')
-            ->select('students.last_name', 'subjects.name', 'assistences.created_at')
+            ->select('students.last_name','students.first_name', 'subjects.name', 'assistences.created_at')
             ->get();
+        // dd($assistences[1]->created_at);    
 
         return view('assistence.index', compact('assistences'));
     }
@@ -70,9 +71,14 @@ class AssistenceController extends Controller
                         $estaEnHorario = $horaActual->between($horaInicio, $horaFin);
                     
                         if ( ($diaActual == $diaCursada) && $estaEnHorario) {
+                            $created_at = date('Y-m-d H:i:s');
+                            $updated_at = date('Y-m-d H:i:s'); 
+
                             DB::table('assistences')->insert([
                                 'subject_id'=>$subject->id,
                                 'student_id'=>$student->id,
+                                'created_at' => $created_at,
+                                'updated_at' => $updated_at,
                             ]);
                             return redirect()->route('assistence.index');
                         }else{

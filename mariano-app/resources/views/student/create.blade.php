@@ -9,7 +9,7 @@
 
         <label >
             Nombre:
-            <input type="text" name="name">
+            <input type="text" name="first_name">
         </label>
         @error('name')
             <br>
@@ -46,14 +46,6 @@
         <br><br>
 
 
-        {{-- <label >
-            State:
-            <input type="text" name="state">
-        </label>
-        <br><br> --}}
-
-
-
         <label >
             Fecha de nacimiento:
             <input type="date" name="birthday">
@@ -65,7 +57,6 @@
         @enderror
         <br><br>
         
-        <hr><hr><hr>
         <button type="submit">Enviar</button>
     </form>
 

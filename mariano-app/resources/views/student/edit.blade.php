@@ -16,7 +16,7 @@
 
         <label >
             Nombre:
-            <input type="text" name="name" value="{{$student[0]->name}}">
+            <input type="text" name="first_name" value="{{$student[0]->first_name}}">
         </label>
         @error('name')
             <br>
@@ -51,13 +51,6 @@
         @enderror
         <br><br>
 
-
-
-        {{-- <label >
-            State:
-            <input type="text" name="state">
-        </label>
-        <br><br> --}}
 
         <label >
             Fecha de nacimiento:

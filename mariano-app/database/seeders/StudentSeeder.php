@@ -19,7 +19,7 @@ class StudentSeeder extends Seeder
     {
         
         DB::table('students')->insert([
-            'name' => 'Mariano',
+            'first_name' => 'Mariano',
             'last_name' => 'Rivero',
             'dni' => '1',
             'birthday' => '1997-10-18',
@@ -27,7 +27,7 @@ class StudentSeeder extends Seeder
             'updated_at' => '2023-06-08 13:44:18',
         ]);
         DB::table('students')->insert([
-            'name' => 'Jose',
+            'first_name' => 'Jose',
             'last_name' => 'Dida',
             'dni' => '2',
             'birthday' => '1998-11-08',
@@ -35,7 +35,7 @@ class StudentSeeder extends Seeder
             'updated_at' => '2023-06-08 13:44:18',
         ]);
         DB::table('students')->insert([
-            'name' => 'Pedro',
+            'first_name' => 'Pedro',
             'last_name' => 'Marconi',
             'dni' => '3',
             'birthday' => '1995-02-01',
@@ -43,7 +43,7 @@ class StudentSeeder extends Seeder
             'updated_at' => '2023-06-08 13:44:18',
         ]);
         DB::table('students')->insert([
-            'name' => 'Adrian',
+            'first_name' => 'Adrian',
             'last_name' => 'Pescara',
             'dni' => '4',
             'birthday' => '1999-12-28',

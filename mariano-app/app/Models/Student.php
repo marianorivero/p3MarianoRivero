@@ -18,7 +18,7 @@ class Student extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'first_name',
         'last_name',
         'state',
         'dni',
@@ -42,15 +42,15 @@ class Student extends Model
     //$student->roles()->attach("1");
     protected function name(): Attribute{
         return new Attribute(
-            //get: fn($value) => ucwords($value),
+            get: fn($value) => ucwords($value),
             set: fn($value) => strtolower($value)
         );
     }
 
     protected function lastName(): Attribute{
         return new Attribute(
-            //get: fn($value) => ucwords($value),
-            //set: fn($value) => strtolower($value)
+            get: fn($value) => ucwords($value),
+            set: fn($value) => strtolower($value)
         );
     }
 }

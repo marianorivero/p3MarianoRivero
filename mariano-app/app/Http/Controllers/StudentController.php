@@ -30,14 +30,14 @@ class StudentController extends Controller
     public function store(Request $request)
     {   
         $request->validate([
-            'name' => 'required',
+            'first_name' => 'required',
             'last_name' => 'required',
             'dni' => 'required',
             'birthday' => 'required'
         ]);
         
         $student= Student::create([
-            'name' => $request->name,
+            'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             // 'state' => $request-> state,
             'dni' => $request->dni,
@@ -68,14 +68,14 @@ class StudentController extends Controller
     public function update(Request $request, string $id)
     { 
         $request->validate([
-            'name' => 'required',
+            'first_name' => 'required',
             'last_name' => 'required',
             'dni' => 'required',
             'birthday' => 'required'
         ]);
 
         $student= Student::find($id);
-        $student->name= $request->name;
+        $student->first_name= $request->first_name;
         $student->last_name= $request->last_name;
         $student->dni= $request->dni;
         $student->birthday= $request->birthday;
