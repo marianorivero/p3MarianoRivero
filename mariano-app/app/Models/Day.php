@@ -11,7 +11,7 @@ class Day extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
+        'nombre',
     ];
 
     public function configSubject(): HasMany

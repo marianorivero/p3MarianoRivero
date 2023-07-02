@@ -27,7 +27,7 @@
             Dia: 
             <select name="dia" id="dia">
                 @foreach ($days as $day)
-                  <option value="{{ $day->id }}" {{ ($day->id == $configSubject->dia ? "selected" : "") }}> {{ $day->name }}</option> 
+                  <option value="{{ $day->id }}" {{ ($day->id == $configSubject->dia ? "selected" : "") }}> {{ $day->nombre }}</option> 
                 @endforeach
             </select>
         </label><br><br>

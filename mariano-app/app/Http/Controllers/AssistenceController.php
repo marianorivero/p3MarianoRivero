@@ -44,15 +44,15 @@ class AssistenceController extends Controller
                 foreach ($subjects as $subject){
                             
                     $diaActual = date('w');
-                    $diaCursada = $subject->configSubjects->dia;//dia de la materia en posicion actual
+                    $diaCursada = $subject->configSubjects[0]->dia;//dia de la materia en posicion actual
                     $horaActual = Carbon::parse(date('H:i'));
-                    $horaInicio = Carbon::parse($subject->configSubjects->hora_inicio); //seteo hora de inicio de materia
-                    $horarioLimite = $subject->configSubjects->hora_limite;
+                    $horaInicio = Carbon::parse($subject->configSubjects[0]->hora_inicio); //seteo hora de inicio de materia
+                    $horarioLimite = $subject->configSubjects[0]->hora_limite;
 
                     if (empty($horarioLimite)) {//si no hay una hora limite
-                        $horaFin = Carbon::parse($subject->configSubjects->hora_fin);
+                        $horaFin = Carbon::parse($subject->configSubjects[0]->hora_fin);
                     } else {
-                        $horaFin = Carbon::parse($subject->configSubjects->hora_limite);
+                        $horaFin = Carbon::parse($subject->configSubjects[0]->hora_limite);
                     }
 
                     $estaEnHorario = $horaActual->between($horaInicio, $horaFin);

@@ -15,25 +15,25 @@ class DaySeeder extends Seeder
     {
         //
         DB::table('days')->insert([
-            'name' => 'Lunes',
+            'nombre' => 'Lunes',
         ]);
         DB::table('days')->insert([
-            'name' => 'Martes',
+            'nombre' => 'Martes',
         ]);
         DB::table('days')->insert([
-            'name' => 'Miercoles',
+            'nombre' => 'Miercoles',
         ]);
         DB::table('days')->insert([
-            'name' => 'Jueves',
+            'nombre' => 'Jueves',
         ]);
         DB::table('days')->insert([
-            'name' => 'Viernes',
+            'nombre' => 'Viernes',
         ]);
         DB::table('days')->insert([
-            'name' => 'Sabado',
+            'nombre' => 'Sabado',
         ]);
         DB::table('days')->insert([
-            'name' => 'Domingo',
+            'nombre' => 'Domingo',
         ]);
         
     }

@@ -19,7 +19,7 @@ class ConfigSubjectsController extends Controller
         $configSubjects = DB::table('config_subjects')
             ->join('subjects', 'config_subjects.subject_id', '=', 'subjects.id')
             ->join('days', 'config_subjects.dia', '=', 'days.id')
-            ->select('subjects.name', 'config_subjects.dia', 'config_subjects.hora_inicio', 'config_subjects.hora_fin', 'config_subjects.hora_limite')
+            ->select('subjects.name', 'days.nombre', 'config_subjects.hora_inicio', 'config_subjects.hora_fin', 'config_subjects.hora_limite')
             ->get();
 
         //dd($configSubjects);
