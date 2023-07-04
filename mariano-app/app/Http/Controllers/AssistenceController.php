@@ -82,15 +82,15 @@ class AssistenceController extends Controller
                             ]);
                             return redirect()->route('assistence.index');
                         }else{
-                            echo("El estudiante seleccionado no cursa en este momento. . . ");
+                            echo("El estudiante seleccionado no cursa en este momento. . .<br> ");
                         } 
                     }  
                 }
             } else {
-                echo("El estudiante seleccionado no esta anotado en ninguna materia. . . ");
+                echo("El estudiante seleccionado no esta anotado en ninguna materia. . .<br>");
             }
         } else {
-            echo("Estudiante no encontrado");
+            echo("Estudiante no encontrado<br>");
         }
     }
 

@@ -23,7 +23,6 @@ class ConfigSubjectsController extends Controller
             ->select('subjects.name', 'days.nombre', 'config_subjects.hora_inicio', 'config_subjects.hora_fin', 'config_subjects.hora_limite')
             ->get();
 
-        //dd($configSubjects);
         return view('configSubjects.index', compact('configSubjects'));
         //
     }

@@ -62,7 +62,7 @@
                 @if ($dibujado==false)
                     <label>
                         <b>{{$day->nombre}}</b>
-                        <input type="checkbox" name="dias[]" >            
+                        <input type="checkbox" name="dias[]" value={{$day->id}}>            
                     </label><br>
                     
                     <label>
@@ -79,6 +79,8 @@
                 @endif
             </div>  
         @endforeach 
+
+        
         <button type="submit">Enviar</button>
     </form>
 
