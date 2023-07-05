@@ -55,8 +55,17 @@
             <small>* {{$message}}</small>
             <br>
         @enderror
-        <br><br>
+        <br><br><br>
         
+        <label >
+            <b>Materias que cursa</b><br>
+            @foreach ($subjects as $subject)
+            <input type="checkbox" name="materias[]" value={{$subject->id}}>
+            {{$subject->name}} <br>
+            @endforeach
+        </label>
+        <br><br>
+
         <button type="submit">Enviar</button>
     </form>
 

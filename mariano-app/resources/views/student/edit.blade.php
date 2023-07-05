@@ -64,6 +64,39 @@
         <br><br>
         
 
+
+        <label >
+            <b>Materias que cursa</b><br>
+            @foreach ($subjects as $subject)
+                <?php
+                $dibujado = false; 
+                ?>
+
+                @foreach ($studentSubjects as $studentSubject)
+                    @if ($subject->id == $studentSubject->id)
+                    
+                        <input type="checkbox" checked name="materias[]" value={{$subject->id}}>
+                        {{$subject->name}} <br>
+
+                        <?php
+                        $dibujado = true; 
+                        ?>
+                    
+                    @endif
+                
+                @endforeach
+
+                @if ($dibujado==false)
+                    <input type="checkbox"  name="materias[]" value={{$subject->id}}>
+                    {{$subject->name}} <br>
+                @endif
+                    
+
+                
+            @endforeach
+        </label>
+        <br><br>
+
         <button type="submit">Enviar</button>
     </form>
 
