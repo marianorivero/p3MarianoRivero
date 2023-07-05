@@ -161,13 +161,15 @@ class SubjectController extends Controller
                 'name' => $request->name
             ]);
 
-            $configSubjects = ConfigSubject::where('subject_id',$id)->get();
-
-            foreach ($configSubjects as $configSubject) {
-                $configSubject->delete();
-            }
-
+            
             if ($request->dias) {
+                $configSubjects = ConfigSubject::where('subject_id',$id)->get();
+    
+                foreach ($configSubjects as $configSubject) {
+                    $configSubject->delete();
+                }
+
+                
                 $viejass           = array();
                 $diasSuperposicion = array();
                 $superpuesto       = false;
