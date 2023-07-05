@@ -35,8 +35,8 @@ class ConfigSubjectSeeder extends Seeder
         DB::table('config_subjects')->insert([
             'subject_id'=>'3',
             'dia'=>'3',
-            'hora_inicio'=>'16:00',
-            'hora_fin'=>'16:40',
+            'hora_inicio'=>'18:00',
+            'hora_fin'=>'22:00',
             'hora_limite'=>'16:15',
             'created_at' => '2023-06-08 13:44:18',
             'updated_at' => '2023-06-08 13:44:18',
