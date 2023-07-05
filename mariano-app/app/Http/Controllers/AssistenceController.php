@@ -52,7 +52,7 @@ class AssistenceController extends Controller
 
                     foreach ($configSubjects as $configSubject) {
 
-                        $diaActual = date('N');
+                        $diaActual  = date('N');
                         $diaCursada = $configSubject->dia;
     
                         $horaActual = Carbon::parse(date('H:i'));
@@ -72,8 +72,8 @@ class AssistenceController extends Controller
                             $updated_at = date('Y-m-d H:i:s'); 
 
                             DB::table('assistences')->insert([
-                                'subject_id'=>$subject->id,
-                                'student_id'=>$student->id,
+                                'subject_id' => $subject->id,
+                                'student_id' => $student->id,
                                 'created_at' => $created_at,
                                 'updated_at' => $updated_at,
                             ]);
