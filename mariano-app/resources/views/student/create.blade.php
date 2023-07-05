@@ -3,6 +3,11 @@
 
 @section('main')  
 
+    <br><br>
+    <a href="/students"><button>Atras</button></a>
+    <a href="/"><button>Inicio</button></a>
+    <br><hr><br>
+
     <form action="{{route('students.store')}}" method="POST">
         {{-- toquen --}}
         @csrf

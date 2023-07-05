@@ -2,6 +2,11 @@
 
 @section('main')
 
+    <br><br>
+    <a href="/careers"><button>Atras</button></a>
+    <a href="/"><button>Inicio</button></a>
+    <br><hr><br>
+
     <form action="{{route('careers.update', $career[0]->id)}}" method="POST">
         {{-- toquen --}}
         @csrf

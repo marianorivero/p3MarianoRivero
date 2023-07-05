@@ -2,7 +2,11 @@
 
 
 @section('main')
- 
+    <br><br>
+    <a href="/subjects"><button>Atras</button></a>
+    <a href="/"><button>Inicio</button></a>
+    <br><hr><br>
+
     <form action="{{route('subjects.store')}}" method="POST">
         {{-- toquen --}}
         @csrf

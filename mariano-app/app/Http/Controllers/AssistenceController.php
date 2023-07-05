@@ -17,17 +17,13 @@ class AssistenceController extends Controller
 
     public function index()
     {
-        //$assistence = Assistence::all();
-
-        // $aa = $assistence[0]->students;
-        // dd($aa);
 
         $assistences = DB::table('assistences')
             ->join('students', 'assistences.student_id', '=', 'students.id')
             ->join('subjects', 'assistences.subject_id', '=', 'subjects.id')
             ->select('students.last_name','students.first_name', 'subjects.name', 'assistences.created_at')
             ->get();
-        // dd($assistences[1]->created_at);    
+   
 
         return view('assistence.index', compact('assistences'));
     }

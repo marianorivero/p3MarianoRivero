@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Day;
 use App\Models\Subject;
 use App\Models\ConfigSubject;
+use Carbon\Carbon;
+
 
 class SubjectController extends Controller
 {
@@ -34,7 +36,7 @@ class SubjectController extends Controller
             'name' => 'required',
         ]);
 
-        
+
         DB::beginTransaction();
         try {
 
@@ -43,15 +45,17 @@ class SubjectController extends Controller
             ]);
             $IdSubject= Subject::latest('id')->first();
     
-            foreach ($request->dias as $dia) {
-
-                $configSubject= ConfigSubject::create([
-                    'subject_id'=> $IdSubject->id,
-                    'dia'=> $dia,
-                    'hora_inicio'=> $request->hora_inicio[$dia-1],
-                    'hora_fin'=> $request->hora_fin[$dia-1],
-                    'hora_limite'=> $request->hora_limite[$dia-1],
-                ]);
+            if ($request->dias) {
+                foreach ($request->dias as $dia) {
+                    
+                    $configSubject= ConfigSubject::create([
+                        'subject_id'=> $IdSubject->id,
+                        'dia'=> $dia,
+                        'hora_inicio'=> $request->hora_inicio[$dia-1],
+                        'hora_fin'=> $request->hora_fin[$dia-1],
+                        'hora_limite'=> $request->hora_limite[$dia-1],
+                    ]);
+                }
             }
             DB::commit();
         } catch (\Exception $e) {

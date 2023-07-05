@@ -9,6 +9,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ConfigSubjectsController;
 use App\Http\Controllers\AssistenceController;
+use App\Http\Controllers\StudentSubjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,9 @@ Route::middleware('auth')->group(function () {
     
     // Ruta audit
     Route::get('audits', [AuditController::class, 'index'])->name('audits.index');
+
+    //Ruta students_subjects
+    Route::get('studentsubjects', [StudentSubjectController::class, 'index'])->name('studentsubjects.index');
     
     
 

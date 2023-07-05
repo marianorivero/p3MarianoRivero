@@ -2,11 +2,12 @@
 
 
 @section('main')
- 
+    <br><br>
+    <a href="/students"><button>Atras</button></a>
+    <a href="/"><button>Inicio</button></a>
+    <br><hr><br>
     
-    {{-- 
-    action="students/{{$student[0]->id}}"
-    --}}
+
     <form action="{{route('students.update', $student[0]->id)}}" method="POST">
         {{-- toquen --}}
         @csrf
@@ -18,7 +19,7 @@
             Nombre:
             <input type="text" name="first_name" value="{{$student[0]->first_name}}">
         </label>
-        @error('name')
+        @error('first_name')
             <br>
             <small>* {{$message}}</small>
             <br>
@@ -65,36 +66,35 @@
         
 
 
-        <label >
-            <b>Materias que cursa</b><br>
-            @foreach ($subjects as $subject)
-                <?php
-                $dibujado = false; 
-                ?>
+        
+        <b>Materias que cursa</b><br>
+        @foreach ($subjects as $subject)
+            <?php
+            $dibujado = false; 
+            ?>
 
-                @foreach ($studentSubjects as $studentSubject)
-                    @if ($subject->id == $studentSubject->id)
-                    
-                        <input type="checkbox" checked name="materias[]" value={{$subject->id}}>
-                        {{$subject->name}} <br>
+            @foreach ($studentSubjects as $studentSubject)
+                @if ($subject->id == $studentSubject->id)
 
-                        <?php
-                        $dibujado = true; 
-                        ?>
-                    
-                    @endif
-                
-                @endforeach
-
-                @if ($dibujado==false)
-                    <input type="checkbox"  name="materias[]" value={{$subject->id}}>
+                    <input type="checkbox" checked name="materias[]" value={{$subject->id}}>
                     {{$subject->name}} <br>
-                @endif
-                    
 
+                    <?php
+                    $dibujado = true; 
+                    ?>
+                    
+                @endif
                 
             @endforeach
-        </label>
+
+            @if ($dibujado==false)
+                <input type="checkbox"  name="materias[]" value={{$subject->id}}>
+                {{$subject->name}} <br>
+            @endif
+                    
+
+                
+        @endforeach
         <br><br>
 
         <button type="submit">Enviar</button>
