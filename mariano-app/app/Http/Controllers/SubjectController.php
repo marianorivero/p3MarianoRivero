@@ -44,17 +44,56 @@ class SubjectController extends Controller
                 'name' => $request->name,
             ]);
             $IdSubject= Subject::latest('id')->first();
+
     
             if ($request->dias) {
+
+                $viejass           = array();
+                $diasSuperposicion = array();
+                $superpuesto       = false;
+
+
+                foreach ($request->dias as $i => $nueva) {
+                    array_push($viejass,   (DB::table('config_subjects')->where('dia', $nueva)->get())  );     
+                }
+
+
+
                 foreach ($request->dias as $dia) {
                     
-                    $configSubject= ConfigSubject::create([
-                        'subject_id'=> $IdSubject->id,
-                        'dia'=> $dia,
-                        'hora_inicio'=> $request->hora_inicio[$dia-1],
-                        'hora_fin'=> $request->hora_fin[$dia-1],
-                        'hora_limite'=> $request->hora_limite[$dia-1],
-                    ]);
+                    $nuevaHoraInicio = Carbon::parse($request->hora_inicio[$dia-1]);
+                    $nuevaHoraFin    = Carbon::parse($request->hora_fin[$dia-1]);
+
+                    foreach ($viejass as $viejas) {
+                        foreach ($viejas as $vieja) {
+                            $inicio = Carbon::parse($vieja->hora_inicio);
+                            $fin    = Carbon::parse($vieja->hora_fin);
+                            $superpone1 = $nuevaHoraInicio->between($inicio, $fin);
+                            $superpone2 = $nuevaHoraFin->between($inicio, $fin);  
+
+                             
+                            if ($dia == $vieja->dia) {
+                                if ( ($superpone1) || ($superpone2)  ) {
+                                    $superpuesto       = true;
+                                    array_push($diasSuperposicion, $dia);
+                                }
+                            }
+                            
+                        }
+                    }
+                    
+                    if ($superpuesto==false) {
+                        $configSubject= ConfigSubject::create([
+                            'subject_id'  => $IdSubject->id,
+                            'dia'         => $dia,
+                            'hora_inicio' => $request->hora_inicio[$dia-1],
+                            'hora_fin'    => $request->hora_fin[$dia-1],
+                            'hora_limite' => $request->hora_limite[$dia-1],
+                        ]);
+                    }
+
+                    $superpuesto = false;
+
                 }
             }
             DB::commit();
@@ -62,8 +101,39 @@ class SubjectController extends Controller
             DB::rollback();
             return $e->getMessage();
         }
-        return redirect()->route('subjects.index');
+        
+        
+        if ($request->dias) {
+            if (!empty($diasSuperposicion)) {
+                echo('
+                    <br><br>
+                    <a href="/subjects"><button>Atras</button></a>
+                    <a href="/"><button>Inicio</button></a>
+                    <br><hr><br>
+                    <b>No se pudieron guardar todas las configuraciones ya que algunas se superponen con otros horarios:</b> <br>
+                    Dias que se superponen (expresados en numeros):
+                ');
+                $dias = array_unique($diasSuperposicion);
+                foreach ($dias as $dia) {
+                    echo($dia.', ');
+                }
+            } else {
+                return redirect()->route('subjects.index');
+            }
+            
+        } else {
+            echo('
+                <br><br>
+                <a href="/subjects"><button>Atras</button></a>
+                <a href="/"><button>Inicio</button></a>
+                <br><hr><br>
+                <b>No ha seleccionado dias para la cofiguracion de la materia, sin embargo, la materia quedó guardada en la base de datos:</b> <br>
+            ');
+        }
+        
+
     }
+
 
 
 
@@ -82,12 +152,15 @@ class SubjectController extends Controller
     public function update(Request $request, string $id)
     {
         if ($request->name) {
+
+
             DB::beginTransaction();
             try {
                 $subjectId = DB::table('subjects')->where('id', $id)->get();
-                $subject = DB::table('subjects')->where('id', $id)->update([
+                $subject   = DB::table('subjects')->where('id', $id)->update([
                     'name' => $request->name
                 ]);
+
                 $configSubjects = ConfigSubject::where('subject_id',$id)->get();
     
                 foreach ($configSubjects as $configSubject) {
@@ -96,13 +169,19 @@ class SubjectController extends Controller
     
                 if ($request->dias) {
                     foreach ($request->dias as $dia) {
-        
+
+
+
+                        
+
+
+
                         $configSubject= ConfigSubject::create([
-                            'subject_id'=> $subjectId[0]->id,
-                            'dia'=> $dia,
-                            'hora_inicio'=> $request->hora_inicio[$dia-1],
-                            'hora_fin'=> $request->hora_fin[$dia-1],
-                            'hora_limite'=> $request->hora_limite[$dia-1],
+                            'subject_id'  => $subjectId[0]->id,
+                            'dia'         => $dia,
+                            'hora_inicio' => $request->hora_inicio[$dia-1],
+                            'hora_fin'    => $request->hora_fin[$dia-1],
+                            'hora_limite' => $request->hora_limite[$dia-1],
                         ]);
                     }
                 }
@@ -112,7 +191,7 @@ class SubjectController extends Controller
                 return $e->getMessage();
             }
         }
-        return redirect()->route('subjects.index');    
+        return redirect()->route('subjects.index');
     }
 
 
@@ -123,3 +202,34 @@ class SubjectController extends Controller
         return redirect()->route('subjects.index');
     }
 }
+
+
+
+
+
+
+
+
+        // $viejass = array();
+        // foreach ($request->dias as $i => $nueva) {
+        //     array_push($viejass,   (DB::table('config_subjects')->where('dia', $nueva)->get())  );     
+        // }
+
+        //DENTRO DE UN FOREACH  $request->dias as $i => $dia
+        // $nuevaHoraInicio = Carbon::parse($request->hora_inicio[$dia-1]);
+        // $nuevaHoraFin    = Carbon::parse($request->hora_fin[$dia-1]);
+
+        // foreach ($viejass as $viejas) {
+        //     foreach ($viejas as $vieja) {
+        //         $inicio = Carbon::parse($vieja->hora_inicio);
+        //         $fin    = Carbon::parse($vieja->hora_fin);
+
+        //         $superpone1 = $nuevaHoraInicio->between($inicio, $fin);
+        //         $superpone2 = $nuevaHoraFin->between($inicio, $fin);  
+                
+        //         if ( ($dia == $vieja->dia)  ($superpone1 == false) && ($superpone1 == false)  ) {
+                    
+                    
+        //         }
+        //     }
+        // }

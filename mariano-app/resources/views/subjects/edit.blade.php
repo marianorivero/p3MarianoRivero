@@ -17,7 +17,7 @@
         @method('PATCH')
 
         <label >
-            Nombre de materia:
+            <b>Nombre de materia:</b>
             <input type="text" name="name" value="{{$subject->name}}">
         </label>
         @error('name')
@@ -53,10 +53,14 @@
                         
                         <label>
                             Hora limite: <input type="time" name="hora_limite[]" value="{{$configSubject->hora_limite}}">
-                        </label>    
+                        </label>  
+                        
+                        
                         <?php
                             $dibujado = true; 
                         ?>
+
+
                     @endif
                 @endforeach
 

@@ -38,6 +38,7 @@ class AssistenceController extends Controller
     public function store(Request $request)
     {
         $student = Student::where("dni",$request->dni)->first();
+        $noCursa = true;
         
         if ($student) { //si el estudiante se encuentra en la base de datos...
 
@@ -76,17 +77,36 @@ class AssistenceController extends Controller
                                 'created_at' => $created_at,
                                 'updated_at' => $updated_at,
                             ]);
+                            $noCursa = false;
                             return redirect()->route('assistence.index');
                         }else{
-                            echo("El estudiante seleccionado no cursa en este momento. . .<br> ");
+                            $noCursa = true;
                         } 
                     }  
                 }
+                if ($noCursa) {
+                    echo('
+                    <a href="/assistence"><button>Atras</button></a>
+                    <a href="/"><button>Inicio</button></a>
+                    <br><hr><br>
+                    El estudiante seleccionado no cursa en este momento. . .<br> 
+                    ');
+                }
             } else {
-                echo("El estudiante seleccionado no esta anotado en ninguna materia. . .<br>");
+                echo('
+                <a href="/assistence"><button>Atras</button></a>
+                <a href="/"><button>Inicio</button></a>
+                <br><hr><br>
+                El estudiante seleccionado no esta anotado en ninguna materia. . .<br>
+                ');
             }
         } else {
-            echo("Estudiante no encontrado<br>");
+            echo('
+            <a href="/assistence"><button>Atras</button></a>
+            <a href="/"><button>Inicio</button></a>
+            <br><hr><br>
+            Estudiante no encontrado<br>
+            ');
         }
     }
 
