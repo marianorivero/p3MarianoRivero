@@ -17,7 +17,7 @@ class ConfigSubjectSeeder extends Seeder
             'dia'=>'1',
             'hora_inicio'=>'20:00',
             'hora_fin'=>'22:00',
-            //'hora_limite'=>'20:15',
+            'hora_limite'=>'20:15',
             'created_at' => '2023-06-08 13:44:18',
             'updated_at' => '2023-06-08 13:44:18',
         ]);
@@ -35,9 +35,9 @@ class ConfigSubjectSeeder extends Seeder
         DB::table('config_subjects')->insert([
             'subject_id'=>'3',
             'dia'=>'3',
-            'hora_inicio'=>'18:00',
+            'hora_inicio'=>'17:00',
             'hora_fin'=>'22:00',
-            'hora_limite'=>'16:15',
+            // 'hora_limite'=>'19:40',
             'created_at' => '2023-06-08 13:44:18',
             'updated_at' => '2023-06-08 13:44:18',
         ]);
@@ -65,16 +65,16 @@ class ConfigSubjectSeeder extends Seeder
             'subject_id'=>'6',
             'dia'=>'6',
             'hora_inicio'=>'21:00',
-            'hora_fin'=>'23:59',
-            'hora_limite'=>'23:15',
+            'hora_fin'=>'22:50',
+            'hora_limite'=>'21:30',
             'created_at' => '2023-06-08 13:44:18',
             'updated_at' => '2023-06-08 13:44:18',
         ]);
         DB::table('config_subjects')->insert([
             'subject_id'=>'7',
             'dia'=>'7',
-            'hora_inicio'=>'00:10',
-            'hora_fin'=>'23:00',
+            'hora_inicio'=>'00:01',
+            'hora_fin'=>'23:59',
             //'hora_limite'=>'11:15',
             'created_at' => '2023-06-08 13:44:18',
             'updated_at' => '2023-06-08 13:44:18',

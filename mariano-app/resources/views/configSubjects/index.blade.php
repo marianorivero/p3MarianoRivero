@@ -33,7 +33,11 @@
                     <td>{{$configSubject->nombre}}</td>
                     <td>{{$configSubject->hora_inicio}}</td>
                     <td>{{$configSubject->hora_fin}}</td>
-                    <td>{{$configSubject->hora_limite}}</td>
+                    @if ($configSubject->hora_limite == null)
+                        <td> - </td>
+                    @else
+                        <td>{{$configSubject->hora_limite}}</td>
+                    @endif
                 </tr>
             @endforeach    
         </tbody>
