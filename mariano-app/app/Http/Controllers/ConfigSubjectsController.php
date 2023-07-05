@@ -14,7 +14,6 @@ class ConfigSubjectsController extends Controller
    
     public function index()
     {
-        //$configSubjects = ConfigSubject::all();
 
         $configSubjects = DB::table('config_subjects')
             ->orderBy('config_subjects.id')

@@ -58,7 +58,7 @@ class AssistenceController extends Controller
                         $horaInicio = Carbon::parse($configSubject->hora_inicio);
                         $horarioLimite = $configSubject->hora_limite;
                         
-                        if (empty($horarioLimite)) {//defino la hora limite
+                        if (empty($horarioLimite)) {//defino la hora limite para el between
                             $horaFin = Carbon::parse($configSubject->hora_fin);
                         } else {
                             $horaFin = Carbon::parse($configSubject->hora_limite);
