@@ -15,9 +15,8 @@
             <tr>
                 <th> Apellido </th>
                 <th>Nombre </th>
-                <th>State</th>
                 <th> DNI </th>
-                <th>Cumpleaños </th>
+                <th>Fecha de nacimiento </th>
                 <th> <a href="{{route('students.create')}}"><button type="submit"> Agregar Alumno</button></a></th>
         </tr>
         </thead>
@@ -27,7 +26,6 @@
                 <tr>
                     <td> {{$student->last_name}} </td>
                     <td> {{$student->first_name}} </td>
-                    <td> {{$student->state}} </td>
                     <td> {{$student->dni}} </td>
                     <td> {{$student->birthday}} </td>
                     <td> <a href="students/{{$student->id}}/edit"><button>Editar</button></a></td>
