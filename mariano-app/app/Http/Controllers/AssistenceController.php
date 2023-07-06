@@ -38,15 +38,8 @@ class AssistenceController extends Controller
     public function store(Request $request)
     {
         $student = Student::where("dni",$request->dni)->first();
-        // dd($student->id);
         $noCursa = true;
 
-        // $yaRegistrado = DB::table('student_subjects')
-        //     ->where('student_id', 1)
-        //     ->orderBy('id','desc')
-        //     ->first(); 
-        // dd($yaRegistrado);   
-        
         if ($student) { //si el estudiante se encuentra en la base de datos...
 
             $subjects = $student->subjects;  
@@ -89,7 +82,7 @@ class AssistenceController extends Controller
                                         <a href="/assistence"><button>Atras</button></a>
                                         <a href="/"><button>Inicio</button></a>
                                         <br><hr><br>
-                                        El estudiante seleccionado ya marco la asistencia de hoy. . .<br> 
+                                        El estudiante seleccionado ya marco la asistencia hoy. . .<br> 
                                     ');                                
                                 } else {
                                     DB::table('assistences')->insert([
