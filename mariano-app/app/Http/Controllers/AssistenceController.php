@@ -38,23 +38,25 @@ class AssistenceController extends Controller
     public function store(Request $request)
     {
         $student = Student::where("dni",$request->dni)->first();
+        // dd($student->id);
         $noCursa = true;
+
+        // $yaRegistrado = DB::table('student_subjects')
+        //     ->where('student_id', 1)
+        //     ->orderBy('id','desc')
+        //     ->first(); 
+        // dd($yaRegistrado);   
         
         if ($student) { //si el estudiante se encuentra en la base de datos...
 
             $subjects = $student->subjects;  
-
-            if ( !empty($subjects[0]) ) { //si el alumno cursa al menos una materia, es decir, si $subjects NO esta vacio 
-                        
-                foreach ($subjects as $subject){
-                    
+            if ( !empty($subjects[0]) ) { //si el alumno cursa al menos una materia, es decir, si $subjects NO esta vacio               
+                foreach ($subjects as $subject){  
                     $configSubjects = $subject->configSubjects;
-
                     foreach ($configSubjects as $configSubject) {
 
                         $diaActual  = date('N');
                         $diaCursada = $configSubject->dia;
-    
                         $horaActual = Carbon::parse(date('H:i'));
                         $horaInicio = Carbon::parse($configSubject->hora_inicio);
                         $horarioLimite = $configSubject->hora_limite;
@@ -64,24 +66,51 @@ class AssistenceController extends Controller
                         } else {
                             $horaFin = Carbon::parse($configSubject->hora_limite);
                         }
-
                         $estaEnHorario = $horaActual->between($horaInicio, $horaFin);
                     
                         if ( ($diaActual == $diaCursada) && $estaEnHorario) {
+
+                            $noCursa = false;
+
                             $created_at = date('Y-m-d H:i:s');
                             $updated_at = date('Y-m-d H:i:s'); 
 
-                            DB::table('assistences')->insert([
-                                'subject_id' => $subject->id,
-                                'student_id' => $student->id,
-                                'created_at' => $created_at,
-                                'updated_at' => $updated_at,
-                            ]);
-                            $noCursa = false;
-                            return redirect()->route('assistence.index');
-                        }else{
-                            $noCursa = true;
-                        } 
+                            $ultimoRegistrado = DB::table('assistences')
+                                ->where('student_id', $student->id)
+                                ->orderBy('id','desc')
+                                ->first();
+
+                                
+                            if ($ultimoRegistrado) {
+                                $ultimoCreatedAt = Carbon::parse($ultimoRegistrado->created_at);    
+                                $estaRegistrado  = $ultimoCreatedAt->between($horaInicio,$horaFin);
+                                if ($estaRegistrado) {
+                                    echo('
+                                        <a href="/assistence"><button>Atras</button></a>
+                                        <a href="/"><button>Inicio</button></a>
+                                        <br><hr><br>
+                                        El estudiante seleccionado ya marco la asistencia de hoy. . .<br> 
+                                    ');                                
+                                } else {
+                                    DB::table('assistences')->insert([
+                                        'subject_id' => $subject->id,
+                                        'student_id' => $student->id,
+                                        'created_at' => $created_at,
+                                        'updated_at' => $updated_at,
+                                    ]);                                    
+                                    return redirect()->route('assistence.index');
+                                }   
+                            }else{                                
+                                DB::table('assistences')->insert([
+                                    'subject_id' => $subject->id,
+                                    'student_id' => $student->id,
+                                    'created_at' => $created_at,
+                                    'updated_at' => $updated_at,
+                                ]);
+                                ;
+                                return redirect()->route('assistence.index');
+                            }                              
+                        }
                     }  
                 }
                 if ($noCursa) {
